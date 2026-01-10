@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Bidding System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b1a2e 100%);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "♠️ ♥️ ♦️ ♣️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px;
+            opacity: 0.1;
+            white-space: nowrap;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .controls {
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .last-updated {
+            font-size: 0.9em;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .edit-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .edit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .edit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .save-btn, .cancel-btn {
+            display: none;
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .cancel-btn {
+            background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+            color: white;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .section:nth-child(1) { border-left-color: #c41e3a; }
+        .section:nth-child(2) { border-left-color: #e74c3c; }
+        .section:nth-child(3) { border-left-color: #3498db; }
+        .section:nth-child(4) { border-left-color: #2ecc71; }
+        .section:nth-child(5) { border-left-color: #f39c12; }
+
+        .section h2 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-content {
+            line-height: 1.8;
+            white-space: pre-wrap;
+            font-size: 1.05em;
+        }
+
+        .bidding-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .bidding-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .bidding-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+            white-space: pre-wrap;
+        }
+
+        .bidding-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .bidding-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #e0e0e0;
+            font-family: 'Georgia', serif;
+            font-size: 1.05em;
+            line-height: 1.8;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        input[type="password"] {
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #e0e0e0;
+            width: 250px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .error {
+            color: #ff6b6b;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>♠️ Precision Bidding System ♥️</h1>
+            <div class="subtitle">Partnership Bidding Guide</div>
+        </div>
+
+        <div class="controls">
+            <div class="last-updated" id="lastUpdated">Last updated: Loading...</div>
+            <div class="edit-controls">
+                <button class="edit-btn" onclick="showPinModal()">🔓 Edit System</button>
+                <button class="save-btn" onclick="saveChanges()">💾 Save Changes</button>
+                <button class="cancel-btn" onclick="cancelEdit()">❌ Cancel</button>
+            </div>
+        </div>
+
+        <div class="content" id="content"></div>
+    </div>
+
+    <div class="modal" id="pinModal">
+        <div class="modal-content">
+            <h2>🔐 Enter PIN to Edit</h2>
+            <input type="password" id="pinInput" placeholder="Enter PIN" maxlength="6" />
+            <div class="error" id="pinError"></div>
+            <div class="modal-buttons">
+                <button class="save-btn" onclick="checkPin()">Unlock</button>
+                <button class="cancel-btn" onclick="closePinModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_PIN = '138142';
+        let isEditMode = false;
+
+        const sections = [
+            {
+                title: "🔰 Opening Bids",
+                icon: "♣️",
+                type: "table",
+                content: [
+                    {
+                        declarer: "1C 16+ NV\n\n1C 17+ V",
+                        responder: "Cannot pass.\n1D -7\n\n\nAny bidding above 1D is heading to a game and looking for best fit\n2C 8+ and looking for minors\n2D 8+ and looking for majors\n---\nJump to major weak 5-6 points and 6 card suit\n---\n1NT 8-10\n2NT 11-13 or 16+\n3NT 14-15",
+                        rebid: "Jump 22+in suit.\n1NT 16-18\n2NT 19-21\n3NT 22+ all controls\n---\nNatural 5cc\nNT no support\nUse 4NT for Aces.\n---\nNatural\n---\nStayman on both 1NT and 2NT\n4C is for Aces later"
+                    },
+                    {
+                        declarer: "1D 11-15\nno 5 major and min 2 diamonds probably one 4 card major\nUseful if stuck e.g.13 points V and NT hand",
+                        responder: "Cannot pass.\nNatural but bid any 4-card major.\n\n1NT shows no major and weak.\n\n2NT 16+",
+                        rebid: "Natural\n Use 4NT for Aces.\n\n\nStayman 3C\n4C is for Aces later"
+                    },
+                    {
+                        declarer: "1HS 11-15\n5 Cards\n\nAny repeat shows 6 cards",
+                        responder: "Natural 8+ support to level of fit\n2 level minor 11/12\nJump in 13-15\nJump out 16+ and may support major later\n\n1NT 8-10 with only 2 card support\n2NT 16+ without 4 card support",
+                        rebid: "Natural\n \n Use 4NT for Aces.\n \n\n\n4C is for Aces"
+                    },
+                    {
+                        declarer: "2C 13 -16 points V \nfor any singleton or void without 5 card major\nnon V we can go to 12 -15",
+                        responder: "2D saying name your singleton",
+                        rebid: "Reply with the singleton  If it is in D then reply 2NT"
+                    },
+                    {
+                        declarer: "2D 12 - 15 NV and 13-16 V\nVoid or Singleton D and no 5-card major but probably two 4 card majors",
+                        responder: "Can't pass.\nNatural but bid 4/5 card major at 2level if weak.\n3 D level is strong showing major interest (Stayman)\n3C is 5 card club suit with no 4 card major\n2NT if D control twice and 3NT if 14+.",
+                        rebid: "Natural\nPass if 4card support\nBid best major after 3D response\nConsider support if 4/5 card clubs\nConsider raise with 14/15 points"
+                    },
+                    {
+                        declarer: "2HS weak 5-10\n6 Cards",
+                        responder: "Natural\n2NT = asking\nLooking for game in major if points in suit or 3NT if points outside suit \nRemember opener is pre-emptive",
+                        rebid: "3C low HCP weak M\n3D low HCP good M\n3H High HCP weak M\n3S High HCP good M\n3NT full AKQJxx in M"
+                    },
+                    {
+                        declarer: "3CDHS weak 6+10\n7+ Cards",
+                        responder: "Natural but raise to four with OUTSIDE strength and plus 16 points and 2 card support",
+                        rebid: "Natural if game likely"
+                    },
+                    {
+                        declarer: "1NT 13-15 NV\n1NT 14 -16 V",
+                        responder: "8+ Stayman & transfers\n2NT is invite if max opening",
+                        rebid: "Natural but control passes to responder after Stayman"
+                    },
+                    {
+                        declarer: "2NT 13-15 minors 5+",
+                        responder: "Bid better minor",
+                        rebid: "Natural but careful when V"
+                    }
+                ]
+            },
+            {
+                title: "📘 Notes",
+                icon: "♠️",
+                type: "text",
+                content: `Cannot pass with void or singleton support but consider cross ruffs on any trump fit.
+When minimum support for partner bid to the level of the fit (if 8 cards level 2, if 9 cards level 3). If maximum then consider another suit as forcing one round, then support partner suit later.`
+            },
+            {
+                title: "🛡️ Defence & Signals",
+                icon: "♦️",
+                type: "text",
+                content: `Give high to Ruff looking for higher suit back as entry.
+Give lower to Ruff looking for lower suit back as entry.
+Discard: low for the lower of the other 2, high for the higher of the other 2 suits BUT if stuck then middle card (6 or 7) says this sit may be ok.
+Play in - high = hate or low = love
+Rule of 11 when leading against NT
+High low = even number of cards | low high = odd -- giving count is important.
+An Ace led means also has King. A King led means also has Q. Any Q led means QJ10 and J led is J 10 9 and one more.
+If leading partners suit best to lead the highest to help figure out. 4th highest against NT is useful unless has internal sequence such as Q 10 9 8 x then better to lead the 10 and not 8. 
+Leading partners suit may be dangerous if oppos overcalled into NT. They want it led!! Top from 3 cards may be good escape. For example, Kxx, Kxxx, 954, KJ x.  Then leading 9 is best. Low from A J 9 x may gain if can be led back again into the Ace.`
+            },
+            {
+                title: "⚔️ Interference Strategy",
+                icon: "♥️",
+                type: "text",
+                content: `After opponent 1NT, 2C for minors or 2D for majors, X for penalties showing 16+ (a 1C open, to be passed)
+After opponent suit bid, X with opening points without stopper or 1NT with stopper and 14 – 16 points.
+Bidding opponent suit shows 17+ (stronger as it means two level bid). 1NT can be tried if a bit dodgy.
+Any double first chance is takeout; second chance is penalties.
+We should interfere opponents with weak jump overcalls of 6 -10 points and 6 card suits where possible. Any jump overcall needs 8 - 12 points at 3 level.
+Our single suit overcall is 8+ points and 5 card suits; simple 2 level overcall is 10+ and 5 card suit.
+Our 2NT overcall shows 5 -5 in minors.
+Always good idea to alert at any bid 2 level and below.
+Over our 1 Club responder should pass any interfering opposition bid with <5 points
+Doubles for takeout with 6-9 points and short in opposition suit. Then the 1C opener shows distribution and responder should bid a major if got at least 4 cards.
+With 10 - 15 points or strength in opposition suit, responder bids nearest NT which forcing to game. With more than 15 points bids opposition suit at next level which looking for slam.
+But if we bid our 1NT (13 -15) and get interrupted then we need systems on.
+If oppos bid 2C over partner 1NT then double says I have majors (same as Stayman). 2D is transfer to H etc. Same as no interrupt. If Oppos overcall another suit, then a double is a transfer and any other suit if bid is a natural suit. 
+If oppos double our 1NT (for penalties) then:
+We leave it if 5+points.
+But if any 6-card suit and 5 points or less then escape to that suit using a transfer if possible.
+1NT - doubled - 2D says transfer to Hearts etc. But redouble says escape to 2C and 2C says escape to 2D. Otherwise we grin and bear it.
+1NT opening should be 14-16 when V. That would mean 1C V is 17+.
+If opposition open 3 of minor, then X is takeout. If they open 3 of major, then X is penalties and 3NT over a major is takeout.
+If opposition open one of minor, then bidding that minor shows both majors or 1C opener. If opposition open one of a major, then jump to 2NT shows both minors and is same as opening 2NT.
+Main problem is NOT to miss slam. Minimum 29 points and 9 cards between both. But if void or singleton consider cross ruff. Ruffing in shorthand makes tricks.`
+            },
+            {
+                title: "🧮 Slam Bidding",
+                icon: "🃏",
+                type: "text",
+                content: `If Slam NT, ask for aces 4C then respond 4D=0 4H=1 4S=2 4NT= 3 (Only if NT was bid)
+If Slam NT, ask for kings 5C then respond 5D=0 5H=1 5S=2 5NT= 3 (Only if NT was bid)
+If Slam Suit, then 5 Aces (K of trump suit is 5th provided suit agreed or implied e.g. 1C 1H 4NT then H is implied)
+then ask for aces using 4NT respond 5C=0-3, 5D=1-4, 5H=2 5S= 2 +Q of trumps.
+If Slam Suit, ask for kings 5NT respond 6C=0 6D=1 6H=2 6S=3 6NT = 4.`
+            }
+        ];
+
+        async function loadSystem() {
+            try {
+                for (let i = 0; i < sections.length; i++) {
+                    const result = await window.storage.get(`section_${i}`);
+                    if (result) {
+                        const saved = JSON.parse(result.value);
+                        sections[i].content = saved;
+                    }
+                }
+                
+                const lastUpdate = await window.storage.get('last_updated');
+                if (lastUpdate) {
+                    document.getElementById('lastUpdated').textContent = `Last updated: ${new Date(lastUpdate.value).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
+                } else {
+                    document.getElementById('lastUpdated').textContent = 'Last updated: Not yet modified';
+                }
+            } catch (error) {
+                console.log('Loading initial system');
+                document.getElementById('lastUpdated').textContent = 'Last updated: Not yet modified';
+            }
+            
+            renderContent();
+        }
+
+        function renderContent() {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = '';
+            
+            sections.forEach((section, index) => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'section';
+                
+                const title = document.createElement('h2');
+                title.innerHTML = `${section.icon} ${section.title}`;
+                sectionDiv.appendChild(title);
+                
+                if (isEditMode) {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = JSON.stringify(section.content, null, 2);
+                    textarea.id = `section_${index}`;
+                    textarea.style.minHeight = '250px';
+                    sectionDiv.appendChild(textarea);
+                } else {
+                    const content = document.createElement('div');
+                    content.className = 'section-content';
+                    
+                    if (section.type === 'table') {
+                        const table = document.createElement('table');
+                        table.className = 'bidding-table';
+                        
+                        const thead = document.createElement('thead');
+                        const headerRow = document.createElement('tr');
+                        ['Declarer', 'Responder', 'Declarer Rebid'].forEach(header => {
+                            const th = document.createElement('th');
+                            th.textContent = header;
+                            headerRow.appendChild(th);
+                        });
+                        thead.appendChild(headerRow);
+                        table.appendChild(thead);
+                        
+                        const tbody = document.createElement('tbody');
+                        section.content.forEach(row => {
+                            const tr = document.createElement('tr');
+                            
+                            const td1 = document.createElement('td');
+                            td1.textContent = row.declarer;
+                            tr.appendChild(td1);
+                            
+                            const td2 = document.createElement('td');
+                            td2.textContent = row.responder;
+                            tr.appendChild(td2);
+                            
+                            const td3 = document.createElement('td');
+                            td3.textContent = row.rebid;
+                            tr.appendChild(td3);
+                            
+                            tbody.appendChild(tr);
+                        });
+                        table.appendChild(tbody);
+                        
+                        content.appendChild(table);
+                    } else {
+                        content.textContent = section.content;
+                    }
+                    
+                    sectionDiv.appendChild(content);
+                }
+                
+                contentDiv.appendChild(sectionDiv);
+            });
+        }
+
+        function showPinModal() {
+            document.getElementById('pinModal').style.display = 'flex';
+            document.getElementById('pinInput').value = '';
+            document.getElementById('pinError').textContent = '';
+            document.getElementById('pinInput').focus();
+        }
+
+        function closePinModal() {
+            document.getElementById('pinModal').style.display = 'none';
+        }
+
+        function checkPin() {
+            const pin = document.getElementById('pinInput').value;
+            if (pin === CORRECT_PIN) {
+                closePinModal();
+                enableEditMode();
+            } else {
+                document.getElementById('pinError').textContent = '❌ Incorrect PIN';
+            }
+        }
+
+        function enableEditMode() {
+            isEditMode = true;
+            document.querySelector('.edit-btn').style.display = 'none';
+            document.querySelector('.save-btn').style.display = 'inline-block';
+            document.querySelector('.cancel-btn').style.display = 'inline-block';
+            renderContent();
+        }
+
+        function cancelEdit() {
+            isEditMode = false;
+            document.querySelector('.edit-btn').style.display = 'inline-block';
+            document.querySelector('.save-btn').style.display = 'none';
+            document.querySelector('.cancel-btn').style.display = 'none';
+            renderContent();
+        }
+
+        async function saveChanges() {
+            try {
+                for (let i = 0; i < sections.length; i++) {
+                    const textarea = document.getElementById(`section_${i}`);
+                    const parsed = JSON.parse(textarea.value);
+                    sections[i].content = parsed;
+                    await window.storage.set(`section_${i}`, textarea.value);
+                }
+                
+                await window.storage.set('last_updated', new Date().toISOString());
+                
+                isEditMode = false;
+                document.querySelector('.edit-btn').style.display = 'inline-block';
+                document.querySelector('.save-btn').style.display = 'none';
+                document.querySelector('.cancel-btn').style.display = 'none';
+                
+                const now = new Date();
+                document.getElementById('lastUpdated').textContent = `Last updated: ${now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
+                
+                renderContent();
+                
+                alert('✅ Changes saved successfully!');
+            } catch (error) {
+                alert('❌ Error saving changes: ' + error.message);
+            }
+        }
+
+        document.getElementById('pinInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPin();
+            }
+        });
+
+        loadSystem();
+    </script>
+</body>
+</html>
