@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Acol System Reference</title>
+    <title>Acol System - Transfers & Weak Twos</title>
     <style>
         :root {
             --primary-blue: #1a3a5f;
@@ -21,7 +21,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', 'Georgia', serif;
+            font-family: 'Segoe UI', 'Helvetica', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             background: var(--bg-cream);
@@ -71,6 +71,8 @@
             margin-bottom: 1.5rem;
         }
 
+        h3 { color: var(--secondary-blue); margin: 1.5rem 0 0.5rem; }
+
         .bid-table {
             width: 100%;
             border-collapse: collapse;
@@ -92,7 +94,7 @@
         .box { padding: 1.2rem; border-radius: 6px; margin: 1rem 0; border-left: 5px solid; }
         .opening { background: var(--opening-bg); border-left-color: var(--secondary-blue); }
         .response { background: var(--response-bg); border-left-color: #f1c40f; }
-        .slam { background: var(--slam-bg); border-left-color: #9b59b6; }
+        .warning { background: var(--interference-bg); border-left-color: var(--accent-red); }
 
         .suit { font-weight: bold; font-size: 1.1rem; }
         .spades { color: black; } .hearts { color: #e74c3c; }
@@ -122,7 +124,6 @@
             border: none;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .btn-edit { background: var(--primary-blue); color: white; }
@@ -138,11 +139,6 @@
             border-radius: 20px;
             font-weight: bold;
             display: none;
-        }
-
-        .editable-content[contenteditable="true"] {
-            outline: 2px dashed #f1c40f;
-            background: rgba(241, 196, 15, 0.05);
         }
 
         /* Modal */
@@ -163,131 +159,117 @@
 
 <div class="container">
     <header>
-        <h1>Basic Acol System</h1>
-        <p>4-Card Majors • Strong 2<span class="suit clubs">♣</span> • Weak NT</p>
+        <h1>Acol System (Modern)</h1>
+        <p>4-Card Majors • Weak NT • Transfers • Weak Twos</p>
     </header>
 
     <nav>
-        <a href="#open-1">1-Level Openings</a>
-        <a href="#open-nt">NT Bidding</a>
-        <a href="#open-2">2-Level Openings</a>
+        <a href="#nt-bidding">NT & Transfers</a>
+        <a href="#weak-twos">Weak Twos</a>
+        <a href="#strong-openings">Strong 2♣</a>
         <a href="#slam">Slam</a>
     </nav>
 
     <main>
-        <section id="open-1">
-            <h2>1-Level Suit Openings</h2>
+        <section id="nt-bidding">
+            <h2>No Trump Bidding</h2>
             <div class="box opening">
-                <p><strong>Requirements:</strong> <span class="points">12-19 HCP</span></p>
-                <ul>
-                    <li>Open your longest suit first.</li>
-                    <li>With two 5-card suits, open the higher-ranking.</li>
-                    <li>With two or three 4-card suits, open the <strong>lower-ranking</strong> (Exceptions apply but this is the Acol base).</li>
-                </ul>
+                <p><strong>1NT Opening:</strong> <span class="points">12-14 HCP</span> Balanced.</p>
             </div>
 
+            <h3>Transfers & Responses to 1NT</h3>
             <table class="bid-table">
                 <thead>
                     <tr>
-                        <th>Response</th>
+                        <th>Bid</th>
                         <th>Meaning</th>
-                        <th>Strength</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>New Suit (1-level)</strong></td>
-                        <td>Forcing for 1 round, 4+ cards</td>
-                        <td><span class="points">6+ HCP</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>1NT</strong></td>
-                        <td>Balanced, denies support/better suit</td>
-                        <td><span class="points">6-9 HCP</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Single Raise (e.g. 1♥-2♥)</strong></td>
-                        <td>4-card support</td>
-                        <td><span class="points">6-9 HCP</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Double Raise (e.g. 1♥-3♥)</strong></td>
-                        <td>4-card support, Invitational</td>
-                        <td><span class="points">10-12 HCP</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="open-nt">
-            <h2>No Trump Openings</h2>
-            <div class="box opening">
-                <p><strong>1NT Opening:</strong> <span class="points">12-14 HCP</span> (Balanced Hand)</p>
-                <p><strong>2NT Opening:</strong> <span class="points">20-22 HCP</span> (Balanced Hand)</p>
-            </div>
-
-            <h3>Responses to 1NT</h3>
-            <table class="bid-table">
-                <thead>
-                    <tr>
-                        <th>Response</th>
-                        <th>Meaning</th>
+                        <th>Requirements</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>2<span class="suit clubs">♣</span></strong></td>
-                        <td>Stayman: Asking for 4-card Major</td>
+                        <td><strong>Stayman</strong>: Asking for 4-card Major</td>
+                        <td><span class="points">8+ HCP</span></td>
                     </tr>
                     <tr>
-                        <td><strong>2<span class="suit diamonds">♦</span> / 2<span class="suit hearts">♥</span></strong></td>
-                        <td>Weak Takeout (to be played in that suit)</td>
+                        <td><strong>2<span class="suit diamonds">♦</span></strong></td>
+                        <td><strong>Transfer to Hearts</strong> (Shows 5+ ♥)</td>
+                        <td><span class="points">0+ HCP</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2<span class="suit hearts">♥</span></strong></td>
+                        <td><strong>Transfer to Spades</strong> (Shows 5+ ♠)</td>
+                        <td><span class="points">0+ HCP</span></td>
                     </tr>
                     <tr>
                         <td><strong>2<span class="suit spades">♠</span></strong></td>
-                        <td>Often played as Minor Suit Stayman or weak ♠</td>
+                        <td>Transfer to 3<span class="suit clubs">♣</span> (or minor suit interest)</td>
+                        <td><span class="points">0+ HCP</span></td>
                     </tr>
                     <tr>
-                        <td><strong>3-Level Suit</strong></td>
-                        <td>Game Forcing / Slam interest</td>
+                        <td><strong>2NT</strong></td>
+                        <td>Invitational to 3NT</td>
+                        <td><span class="points">11-12 HCP</span></td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-        <section id="open-2">
-            <h2>2-Level Openings</h2>
-            
-            <h3>2<span class="suit clubs">♣</span>: The Strongest Bid</h3>
-            <div class="box opening">
-                <p><span class="points">23+ HCP</span> Balanced or Game Force strength in a suit.</p>
-                <p><strong>Response:</strong> 2<span class="suit diamonds">♦</span> is a relay (negative), showing 0-7 HCP.</p>
+        <section id="weak-twos">
+            <h2>Weak Two Openings</h2>
+            <div class="box warning">
+                <p>Used for 2<span class="suit diamonds">♦</span>, 2<span class="suit hearts">♥</span>, and 2<span class="suit spades">♠</span>.</p>
+                <p><strong>Requirements:</strong> <span class="points">6-10 HCP</span> and a good <strong>6-card suit</strong>.</p>
             </div>
 
-            <h3>2<span class="suit diamonds">♦</span> / 2<span class="suit hearts">♥</span> / 2<span class="suit spades">♠</span>: Strong Two</h3>
+            <h3>Responses to Weak Twos</h3>
+            <table class="bid-table">
+                <thead>
+                    <tr>
+                        <th>Bid</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>New Suit</strong></td>
+                        <td>Natural, 5+ cards, Forcing for 1 round</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2NT</strong></td>
+                        <td><strong>Feature Inquiry</strong>: Asking for strength/entry</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Suit Raise</strong></td>
+                        <td>Preemptive (Extending the block)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="strong-openings">
+            <h2>Strong Openings</h2>
+            <h3>2<span class="suit clubs">♣</span> Opening</h3>
             <div class="box opening">
-                <p><span class="points">8+ Playing Tricks</span>. Forcing for one round.</p>
-                <p>Shows a very strong suit and <span class="points">16+ HCP</span>.</p>
+                <p><strong>Requirements:</strong> <span class="points">23+ HCP</span> or Game Force Hand.</p>
+                <p><strong>2<span class="suit diamonds">♦</span> Response:</strong> Negative/Relay (<span class="points">0-7 HCP</span>).</p>
+                <p><strong>Other Responses:</strong> Positive, 5+ card suit, <span class="points">8+ HCP</span>.</p>
             </div>
         </section>
 
         <section id="slam">
-            <h2>Slam Bidding (Blackwood)</h2>
-            <div class="box slam">
-                <p><strong>4NT:</strong> Asking for Aces</p>
-                <ul>
-                    <li>5<span class="suit clubs">♣</span>: 0 or 4 Aces</li>
-                    <li>5<span class="suit diamonds">♦</span>: 1 Ace</li>
-                    <li>5<span class="suit hearts">♥</span>: 2 Aces</li>
-                    <li>5<span class="suit spades">♠</span>: 3 Aces</li>
-                </ul>
+            <h2>Slam Bidding</h2>
+            <div class="box response">
+                <p><strong>Blackwood 4NT:</strong> Asking for Aces (0/4, 1, 2, 3).</p>
+                <p><strong>Gerber 4<span class="suit clubs">♣</span>:</strong> Asking for Aces after a NT bid.</p>
             </div>
         </section>
     </main>
 
     <footer>
         <p style="text-align: center; padding: 1.5rem; background: #2f3640; color: white;">
-            Acol Bidding Reference Document
+            Acol Partnership Agreement - Modern Standards
         </p>
     </footer>
 </div>
@@ -301,8 +283,7 @@
 
 <div class="modal" id="pinModal">
     <div class="modal-content">
-        <h3>Security Check</h3>
-        <p>Enter PIN to unlock editing:</p>
+        <h3>PIN Required</h3>
         <input type="password" id="pinInput" maxlength="6">
         <div style="display:flex; gap:10px;">
             <button class="btn" onclick="closeModal()">Cancel</button>
@@ -313,7 +294,7 @@
 
 <script>
     const PIN = '138142';
-    const KEY = 'acol_system_data';
+    const KEY = 'acol_modern_data';
     let editMode = false;
 
     window.onload = () => {
@@ -333,36 +314,32 @@
             toggleEdit(true);
             closeModal();
         } else {
-            alert('Wrong PIN');
+            alert('Access Denied');
         }
     }
 
     function toggleEdit(status) {
         editMode = status;
-        const elements = document.querySelectorAll('main p, main li, main td, main h2, main h3, .box');
-        elements.forEach(el => el.contentEditable = status);
+        document.querySelectorAll('main p, main li, main td, main h2, main h3, .box')
+            .forEach(el => el.contentEditable = status);
         
         document.getElementById('editBtn').innerHTML = status ? '🔓 Lock' : '🔒 Edit Mode';
         document.getElementById('saveBtn').style.display = status ? 'block' : 'none';
         document.getElementById('resetBtn').style.display = status ? 'block' : 'none';
         document.getElementById('editIndicator').style.display = status ? 'block' : 'none';
 
-        if(!status) {
-            localStorage.setItem(KEY, JSON.stringify(document.querySelector('main').innerHTML));
-        }
+        if(!status) localStorage.setItem(KEY, JSON.stringify(document.querySelector('main').innerHTML));
     }
 
     function exportHTML() {
-        const html = document.documentElement.outerHTML;
-        const blob = new Blob([html], {type: 'text/html'});
         const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'acol_system.html';
+        a.href = URL.createObjectURL(new Blob([document.documentElement.outerHTML], {type: 'text/html'}));
+        a.download = 'acol_modern.html';
         a.click();
     }
 
     function resetContent() {
-        if(confirm('Delete all changes?')) {
+        if(confirm('Reset all data?')) {
             localStorage.removeItem(KEY);
             location.reload();
         }
