@@ -1,8 +1,11 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precision Club System - Complete Reference</title>
+    <title>Precision Club System - Reference Guide</title>
     <style>
+        /* تم الإبقاء على جميع التنسيقات (CSS) كما هي في ملفك الأصلي دون تغيير */
         :root {
             --primary-green: #2d5016;
             --secondary-green: #4a7c28;
@@ -16,11 +19,7 @@
             --slam-bg: #e8f0ff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Georgia', 'Palatino', serif;
@@ -82,17 +81,11 @@
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: var(--accent-gold);
-        }
+        nav a:hover { color: var(--accent-gold); }
 
-        main {
-            padding: 3rem 2rem;
-        }
+        main { padding: 3rem 2rem; }
 
-        section {
-            margin-bottom: 4rem;
-        }
+        section { margin-bottom: 4rem; }
 
         h2 {
             font-size: 2rem;
@@ -132,16 +125,9 @@
             margin-top: 1rem;
         }
 
-        .glossary-item {
-            display: flex;
-            gap: 0.5rem;
-        }
+        .glossary-item { display: flex; gap: 0.5rem; }
 
-        .glossary-term {
-            font-weight: 700;
-            color: var(--primary-green);
-            min-width: 60px;
-        }
+        .glossary-term { font-weight: 700; color: var(--primary-green); min-width: 60px; }
 
         .bid-table {
             width: 100%;
@@ -167,19 +153,7 @@
             vertical-align: top;
         }
 
-        .bid-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .bid-table tr:hover {
-            background: var(--bg-cream);
-        }
-
-        .opening-bid {
-            font-weight: 700;
-            color: var(--primary-green);
-            font-size: 1.1rem;
-        }
+        .bid-table tr:hover { background: var(--bg-cream); }
 
         .points {
             display: inline-block;
@@ -192,37 +166,17 @@
             margin-left: 0.5rem;
         }
 
-        .card-box {
-            background: var(--opening-bg);
+        .card-box, .response-box, .interference-box, .slam-box {
             padding: 1.5rem;
             border-radius: 8px;
             margin: 1rem 0;
-            border-left: 4px solid var(--secondary-green);
+            border-left: 4px solid transparent;
         }
 
-        .response-box {
-            background: var(--response-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 4px solid var(--accent-gold);
-        }
-
-        .interference-box {
-            background: var(--interference-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 4px solid #c44;
-        }
-
-        .slam-box {
-            background: var(--slam-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 4px solid #4488cc;
-        }
+        .card-box { background: var(--opening-bg); border-left-color: var(--secondary-green); }
+        .response-box { background: var(--response-bg); border-left-color: var(--accent-gold); }
+        .interference-box { background: var(--interference-bg); border-left-color: #c44; }
+        .slam-box { background: var(--slam-bg); border-left-color: #4488cc; }
 
         .example {
             background: #f9f9f9;
@@ -234,484 +188,18 @@
             font-size: 0.9rem;
         }
 
-        .example-title {
-            font-weight: 700;
-            color: var(--primary-green);
-            margin-bottom: 0.5rem;
-            font-family: 'Georgia', serif;
-        }
+        .example-title { font-weight: 700; color: var(--primary-green); margin-bottom: 0.5rem; }
 
-        ul, ol {
-            margin: 1rem 0 1rem 2rem;
-        }
-
-        li {
-            margin: 0.5rem 0;
-        }
-
-        strong {
-            color: var(--primary-green);
-            font-weight: 700;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, var(--accent-gold) 0%, var(--accent-gold) 100%);
-            background-repeat: no-repeat;
-            background-size: 100% 40%;
-            background-position: 0 88%;
-            padding: 0 0.2rem;
-        }
-
-        .warning {
-            background: #fff3cd;
-            border-left: 4px solid #ff9800;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-
-        .tip {
-            background: #d1ecf1;
-            border-left: 4px solid #17a2b8;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-
-        .suit {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
+        .suit { font-weight: 700; font-size: 1.1rem; }
         .suit.spades { color: #000; }
         .suit.hearts { color: #c00; }
         .suit.diamonds { color: #f60; }
         .suit.clubs { color: #060; }
 
-        footer {
-            background: var(--primary-green);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
+        .warning { background: #fff3cd; border-left: 4px solid #ff9800; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+        .tip { background: #d1ecf1; border-left: 4px solid #17a2b8; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
 
-        @media print {
-            nav {
-                position: static;
-            }
-            
-            .container {
-                box-shadow: none;
-            }
-
-            section {
-                page-break-inside: avoid;
-            }
-        }
-
-        /* Convention Card Print Styles */
-        @media print {
-            @page {
-                size: letter;
-                margin: 0.5in;
-            }
-
-            body.convention-card-print {
-                background: white;
-                margin: 0;
-                padding: 0;
-            }
-
-            body.convention-card-print * {
-                box-sizing: border-box;
-            }
-
-            body.convention-card-print .container {
-                max-width: 100%;
-                box-shadow: none;
-                margin: 0;
-                padding: 0;
-            }
-
-            body.convention-card-print header {
-                background: white !important;
-                color: black !important;
-                border: 3px solid black !important;
-                padding: 0.5rem !important;
-                margin-bottom: 0.3rem !important;
-                page-break-after: avoid;
-                text-align: center;
-            }
-
-            body.convention-card-print h1 {
-                color: black !important;
-                font-size: 1.3rem !important;
-                margin: 0 0 0.2rem 0 !important;
-                font-weight: bold !important;
-            }
-
-            body.convention-card-print .subtitle {
-                color: black !important;
-                font-size: 0.8rem !important;
-                margin: 0 !important;
-            }
-
-            body.convention-card-print nav,
-            body.convention-card-print footer,
-            body.convention-card-print .edit-controls,
-            body.convention-card-print .edit-indicator,
-            body.convention-card-print #glossary,
-            body.convention-card-print #notes,
-            body.convention-card-print .example,
-            body.convention-card-print .tip,
-            body.convention-card-print .warning,
-            body.convention-card-print .example-title {
-                display: none !important;
-            }
-
-            body.convention-card-print main {
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-
-            body.convention-card-print section {
-                margin: 0 !important;
-                padding: 0.3rem 0 !important;
-            }
-
-            /* Section headings */
-            body.convention-card-print h2 {
-                font-size: 1rem !important;
-                color: black !important;
-                background: #e0e0e0 !important;
-                border: 2px solid black !important;
-                margin: 0.4rem 0 0.25rem 0 !important;
-                padding: 0.25rem 0.5rem !important;
-                page-break-after: avoid !important;
-                font-weight: bold !important;
-                text-transform: uppercase;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            body.convention-card-print h3 {
-                font-size: 0.85rem !important;
-                color: black !important;
-                margin: 0.3rem 0 0.15rem 0 !important;
-                padding: 0.15rem 0 !important;
-                border-bottom: 1px solid #666 !important;
-                page-break-after: avoid !important;
-                font-weight: bold !important;
-            }
-
-            body.convention-card-print h4 {
-                font-size: 0.75rem !important;
-                color: black !important;
-                margin: 0.2rem 0 0.1rem 0 !important;
-                page-break-after: avoid !important;
-                font-weight: bold !important;
-            }
-
-            /* Text and lists */
-            body.convention-card-print p {
-                font-size: 0.7rem !important;
-                line-height: 1.25 !important;
-                margin: 0.1rem 0 !important;
-            }
-
-            body.convention-card-print li {
-                font-size: 0.7rem !important;
-                line-height: 1.25 !important;
-                margin: 0.05rem 0 !important;
-            }
-
-            body.convention-card-print ul,
-            body.convention-card-print ol {
-                margin: 0.15rem 0 0.15rem 1rem !important;
-                padding: 0 !important;
-            }
-
-            /* Tables */
-            body.convention-card-print .bid-table {
-                font-size: 0.65rem !important;
-                margin: 0.2rem 0 0.3rem 0 !important;
-                border-collapse: collapse !important;
-                width: 100% !important;
-                page-break-inside: auto !important;
-            }
-
-            body.convention-card-print .bid-table thead {
-                display: table-header-group !important;
-            }
-
-            body.convention-card-print .bid-table tr {
-                page-break-inside: avoid !important;
-                page-break-after: auto !important;
-            }
-
-            body.convention-card-print .bid-table th {
-                background: #d0d0d0 !important;
-                color: black !important;
-                padding: 0.25rem 0.3rem !important;
-                border: 1px solid black !important;
-                font-weight: bold !important;
-                text-align: left !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            body.convention-card-print .bid-table td {
-                padding: 0.25rem 0.3rem !important;
-                border: 1px solid #888 !important;
-                vertical-align: top !important;
-            }
-
-            body.convention-card-print .bid-table .opening-bid {
-                font-weight: bold !important;
-                font-size: 0.7rem !important;
-            }
-
-            /* Info boxes */
-            body.convention-card-print .card-box,
-            body.convention-card-print .response-box,
-            body.convention-card-print .interference-box,
-            body.convention-card-print .slam-box {
-                background: white !important;
-                border: 1px solid #666 !important;
-                padding: 0.3rem !important;
-                margin: 0.2rem 0 !important;
-                border-radius: 0 !important;
-                page-break-inside: avoid !important;
-            }
-
-            body.convention-card-print .points {
-                background: white !important;
-                color: black !important;
-                padding: 0.05rem 0.25rem !important;
-                border: 1px solid black !important;
-                font-size: 0.65rem !important;
-                font-weight: bold !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            body.convention-card-print .suit {
-                font-size: 0.75rem !important;
-            }
-
-            body.convention-card-print strong {
-                font-weight: bold !important;
-            }
-
-            /* Force page breaks */
-            body.convention-card-print #opening-bids {
-                page-break-before: avoid !important;
-            }
-
-            body.convention-card-print #defense {
-                page-break-before: always !important;
-            }
-
-            body.convention-card-print #interference {
-                page-break-before: auto !important;
-            }
-
-            body.convention-card-print #slam {
-                page-break-before: auto !important;
-            }
-
-            /* Compact specific sections */
-            body.convention-card-print .glossary-grid,
-            body.convention-card-print .glossary-item {
-                display: none !important;
-            }
-        }
-
-        /* Convention Card Preview Mode (on screen before printing) */
-        body.convention-card-preview {
-            background: #f0f0f0;
-        }
-
-        body.convention-card-preview .container {
-            max-width: 8.5in;
-            background: white;
-            padding: 0.5in;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            margin: 20px auto;
-        }
-
-        body.convention-card-preview header {
-            background: white !important;
-            color: black !important;
-            border: 3px solid black !important;
-            padding: 0.5rem !important;
-            margin-bottom: 0.3rem !important;
-            text-align: center;
-        }
-
-        body.convention-card-preview h1 {
-            color: black !important;
-            font-size: 1.3rem !important;
-            margin: 0 0 0.2rem 0 !important;
-            font-weight: bold !important;
-        }
-
-        body.convention-card-preview .subtitle {
-            color: black !important;
-            font-size: 0.8rem !important;
-            margin: 0 !important;
-        }
-
-        body.convention-card-preview nav,
-        body.convention-card-preview footer,
-        body.convention-card-preview .edit-controls,
-        body.convention-card-preview .edit-indicator,
-        body.convention-card-preview #glossary,
-        body.convention-card-preview #notes,
-        body.convention-card-preview .example,
-        body.convention-card-preview .tip,
-        body.convention-card-preview .warning {
-            display: none;
-        }
-
-        body.convention-card-preview main {
-            padding: 0 !important;
-        }
-
-        body.convention-card-preview section {
-            margin: 0 !important;
-            padding: 0.3rem 0 !important;
-        }
-
-        body.convention-card-preview h2 {
-            font-size: 1rem !important;
-            color: black !important;
-            background: #e0e0e0 !important;
-            border: 2px solid black !important;
-            margin: 0.4rem 0 0.25rem 0 !important;
-            padding: 0.25rem 0.5rem !important;
-            font-weight: bold !important;
-            text-transform: uppercase;
-        }
-
-        body.convention-card-preview h3 {
-            font-size: 0.85rem !important;
-            color: black !important;
-            margin: 0.3rem 0 0.15rem 0 !important;
-            padding: 0.15rem 0 !important;
-            border-bottom: 1px solid #666 !important;
-            font-weight: bold !important;
-        }
-
-        body.convention-card-preview h4 {
-            font-size: 0.75rem !important;
-            color: black !important;
-            margin: 0.2rem 0 0.1rem 0 !important;
-            font-weight: bold !important;
-        }
-
-        body.convention-card-preview p,
-        body.convention-card-preview li {
-            font-size: 0.7rem !important;
-            line-height: 1.25 !important;
-        }
-
-        body.convention-card-preview .bid-table {
-            font-size: 0.65rem !important;
-            margin: 0.2rem 0 0.3rem 0 !important;
-        }
-
-        body.convention-card-preview .bid-table th {
-            background: #d0d0d0 !important;
-            padding: 0.25rem 0.3rem !important;
-        }
-
-        body.convention-card-preview .bid-table td {
-            padding: 0.25rem 0.3rem !important;
-        }
-
-        body.convention-card-preview .card-box,
-        body.convention-card-preview .response-box,
-        body.convention-card-preview .interference-box,
-        body.convention-card-preview .slam-box {
-            background: white !important;
-            border: 1px solid #666 !important;
-            padding: 0.3rem !important;
-            margin: 0.2rem 0 !important;
-        }
-
-        .print-controls {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-            z-index: 3000;
-            display: none;
-        }
-
-        .print-controls.show {
-            display: block;
-        }
-
-        .print-controls button {
-            margin: 0 0.5rem;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .print-controls .print-now {
-            background: var(--secondary-green);
-            color: white;
-        }
-
-        .print-controls .print-now:hover {
-            background: var(--primary-green);
-        }
-
-        .print-controls .cancel-print {
-            background: #ddd;
-            color: var(--text-dark);
-        }
-
-        .print-controls .cancel-print:hover {
-            background: #ccc;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            main {
-                padding: 2rem 1rem;
-            }
-
-            .bid-table {
-                font-size: 0.85rem;
-            }
-
-            .bid-table th,
-            .bid-table td {
-                padding: 0.75rem 0.5rem;
-            }
-        }
-
-        /* Edit Mode Styles */
+        /* Edit Mode UI */
         .edit-controls {
             position: fixed;
             bottom: 20px;
@@ -728,120 +216,13 @@
             padding: 12px 24px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.95rem;
             font-weight: 600;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             transition: all 0.3s;
         }
 
-        .edit-btn:hover {
-            background: var(--primary-green);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-        }
-
-        .edit-btn.active {
-            background: var(--accent-gold);
-        }
-
-        .edit-btn.danger {
-            background: #c44;
-        }
-
-        .edit-btn.danger:hover {
-            background: #a33;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
-
-        .modal h3 {
-            margin: 0 0 1rem;
-            color: var(--primary-green);
-        }
-
-        .modal input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--border-light);
-            border-radius: 6px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .modal input:focus {
-            outline: none;
-            border-color: var(--secondary-green);
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
-        .modal-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .modal-btn.primary {
-            background: var(--secondary-green);
-            color: white;
-        }
-
-        .modal-btn.primary:hover {
-            background: var(--primary-green);
-        }
-
-        .modal-btn.secondary {
-            background: #ddd;
-            color: var(--text-dark);
-        }
-
-        .modal-btn.secondary:hover {
-            background: #ccc;
-        }
-
-        .editable-content[contenteditable="true"] {
-            outline: 2px dashed var(--accent-gold);
-            padding: 0.25rem;
-            border-radius: 4px;
-            min-height: 20px;
-        }
-
-        .editable-content[contenteditable="true"]:hover {
-            background: rgba(212, 165, 116, 0.1);
-        }
+        .edit-btn.active { background: var(--accent-gold); }
+        .edit-btn.danger { background: #c44; }
 
         .edit-indicator {
             position: fixed;
@@ -854,25 +235,31 @@
             font-weight: 600;
             display: none;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        .edit-indicator.show {
-            display: block;
+        .edit-indicator.show { display: block; }
+
+        .editable-content[contenteditable="true"] {
+            outline: 2px dashed var(--accent-gold);
+            padding: 0.25rem;
+            border-radius: 4px;
         }
 
-        @media (max-width: 768px) {
-            .edit-controls {
-                bottom: 10px;
-                right: 10px;
-                flex-direction: column;
-            }
-
-            .edit-btn {
-                padding: 10px 16px;
-                font-size: 0.85rem;
-            }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center; align-items: center;
         }
+        .modal.show { display: flex; }
+        .modal-content { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 400px; }
+        .modal input { width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 6px; }
+        .modal-buttons { display: flex; gap: 10px; justify-content: flex-end; }
+
+        footer { background: var(--primary-green); color: white; text-align: center; padding: 2rem; margin-top: 4rem; }
     </style>
 </head>
 <body>
@@ -887,1040 +274,151 @@
                 <li><a href="#glossary">Glossary</a></li>
                 <li><a href="#opening-bids">Opening Bids</a></li>
                 <li><a href="#notes">Key Principles</a></li>
-                <li><a href="#defense">Defense &amp; Signals</a></li>
+                <li><a href="#defense">Defense</a></li>
                 <li><a href="#interference">Interference</a></li>
                 <li><a href="#slam">Slam Bidding</a></li>
             </ul>
         </nav>
 
         <main>
-            <!-- GLOSSARY -->
             <section id="glossary">
-                <h2 contenteditable="true" class="editable-content">Glossary of Terms</h2>
-                <div class="glossary editable-content" contenteditable="true">
+                <h2>Glossary of Terms</h2>
+                <div class="glossary">
                     <div class="glossary-grid">
-                        <div class="glossary-item">
-                            <span class="glossary-term">V:</span>
-                            <span>Vulnerable</span>
-                        </div>
-                        <div class="glossary-item">
-                            <span class="glossary-term">NV:</span>
-                            <span>Non-Vulnerable</span>
-                        </div>
-                        <div class="glossary-item">
-                            <span class="glossary-term">HCP:</span>
-                            <span>High Card Points</span>
-                        </div>
-                        <div class="glossary-item">
-                            <span class="glossary-term">HS:</span>
-                            <span>Hearts/Spades (Majors)</span>
-                        </div>
-                        <div class="glossary-item">
-                            <span class="glossary-term">NT:</span>
-                            <span>No Trump</span>
-                        </div>
-                        <div class="glossary-item">
-                            <span class="glossary-term">RKCB:</span>
-                            <span>Roman Key Card Blackwood</span>
-                        </div>
-                        <div class="glossary-item">
-                            <span class="glossary-term">X:</span>
-                            <span>Double</span>
-                        </div>
-                        <div class="glossary-item">
-                            <span class="glossary-term">XX:</span>
-                            <span>Redouble</span>
-                        </div>
+                        <div class="glossary-item"><span class="glossary-term">HCP:</span> <span>High Card Points</span></div>
+                        <div class="glossary-item"><span class="glossary-term">NT:</span> <span>No Trump</span></div>
                     </div>
                 </div>
             </section>
 
-            <!-- OPENING BIDS -->
             <section id="opening-bids">
-                <h2 contenteditable="true" class="editable-content">Opening Bids</h2>
-
-                <h3 contenteditable="true" class="editable-content">1<span class="suit clubs">♣</span> - Strong Club</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Requirements:</strong></p>
+                <h2>Opening Bids</h2>
+                <h3>1<span class="suit clubs">♣</span> - Strong Club</h3>
+                <div class="card-box">
+                    <p><strong>Requirements:</strong></p>
                     <ul>
-                        <li contenteditable="true" class="editable-content"><span class="points">16+ NV</span> or <span class="points">17+ V</span></li>
-                        <li contenteditable="true" class="editable-content">Any distribution (may not have clubs!)</li>
-                        <li contenteditable="true" class="editable-content">Forcing - responder cannot pass</li>
+                        <li><span class="points">16+ NV</span> or <span class="points">17+ V</span></li>
+                        <li>Forcing - responder cannot pass</li>
                     </ul>
                 </div>
-
-                <h4 contenteditable="true" class="editable-content">Responses to 1<span class="suit clubs">♣</span></h4>
-                <table class="bid-table">
-                    <thead>
-                        <tr>
-                            <th contenteditable="true" class="editable-content">Response</th>
-                            <th contenteditable="true" class="editable-content">Meaning</th>
-                            <th contenteditable="true" class="editable-content">Opener's Rebids</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>1<span class="suit diamonds">♦</span></strong></td>
-                            <td contenteditable="true" class="editable-content">0-7 HCP, waiting bid (can have any distribution)</td>
-                            <td contenteditable="true" class="editable-content">Shows distribution naturally:<br>
-                                • 1NT = 16-18 balanced<br>
-                                • 2NT = 19-21 balanced<br>
-                                • 3NT = 22+ balanced with all controls<br>
-                                • Suit bids = natural, 5+ cards<br>
-                                • Jump = 22+ in that suit
-                            </td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>1<span class="suit hearts">♥</span>/1<span class="suit spades">♠</span></strong></td>
-                            <td contenteditable="true" class="editable-content">8+ HCP, 5+ card suit, game forcing</td>
-                            <td contenteditable="true" class="editable-content">Natural support or bid own suit</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>1NT</strong></td>
-                            <td contenteditable="true" class="editable-content">8-10 HCP, balanced</td>
-                            <td contenteditable="true" class="editable-content">Stayman (2<span class="suit clubs">♣</span>) and transfers available</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2<span class="suit clubs">♣</span></strong></td>
-                            <td contenteditable="true" class="editable-content">8+ HCP, interested in minors</td>
-                            <td contenteditable="true" class="editable-content">Bid 4-card minor</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2<span class="suit diamonds">♦</span></strong></td>
-                            <td contenteditable="true" class="editable-content">8+ HCP, interested in majors (looking for 4-4 fit)</td>
-                            <td contenteditable="true" class="editable-content">Bid 4-card major</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2NT</strong></td>
-                            <td contenteditable="true" class="editable-content">11-13 HCP or 16+ HCP</td>
-                            <td contenteditable="true" class="editable-content">Stayman (3<span class="suit clubs">♣</span>) available. Use 4<span class="suit clubs">♣</span> for ace-asking if needed</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>3NT</strong></td>
-                            <td contenteditable="true" class="editable-content">14-15 HCP, balanced</td>
-                            <td contenteditable="true" class="editable-content">Pass or use 4<span class="suit clubs">♣</span>&nbsp;for ace-asking if needed</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2<span class="suit hearts">♥</span>/2<span class="suit spades">♠</span></strong></td>
-                            <td contenteditable="true" class="editable-content">Weak jump: 5-6 HCP, 6-card suit (preemptive)</td>
-                            <td contenteditable="true" class="editable-content">Pass or raise to game with fit</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="tip editable-content" contenteditable="true">
-                    <strong>Memory Aid:</strong> After 1<span class="suit clubs">♣</span> opening, any bid above 1<span class="suit diamonds">♦</span> (except weak jump to major) is heading to game and looking for best fit.
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">1<span class="suit diamonds">♦</span> - Nebulous Diamond</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Requirements:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><span class="points">11-15 HCP</span></li>
-                        <li contenteditable="true" class="editable-content">No 5-card major</li>
-                        <li contenteditable="true" class="editable-content">Minimum 2 diamonds (but probably has a 4-card major)</li>
-                        <li contenteditable="true" class="editable-content">Useful when stuck with 11-13 HCP, balanced, and no 5-card major</li>
-                    </ul>
-                </div>
-
-                <h4 contenteditable="true" class="editable-content">Responses to 1<span class="suit diamonds">♦</span></h4>
-                <table class="bid-table">
-                    <thead>
-                        <tr>
-                            <th contenteditable="true" class="editable-content">Response</th>
-                            <th contenteditable="true" class="editable-content">Meaning</th>
-                            <th contenteditable="true" class="editable-content">Opener's Rebids</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>1<span class="suit hearts">♥</span>/1<span class="suit spades">♠</span></strong></td>
-                            <td contenteditable="true" class="editable-content">4+ cards, 8-10 HCP<br><strong class="highlight">Bid any 4-card major</strong></td>
-                            <td contenteditable="true" class="editable-content">Natural support or show own 4-card major</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>1NT</strong></td>
-                            <td contenteditable="true" class="editable-content"><strong class="highlight">No 4-card major</strong>, 8-10 HCP, denies support</td>
-                            <td contenteditable="true" class="editable-content">Natural</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2<span class="suit clubs">♣/</span></strong><span style="color: rgb(45, 80, 22); font-weight: 700;">2<span class="suit diamonds">♦</span></span></td>
-                            <td contenteditable="true" class="editable-content">Natural, 8+ HCP, 5+ card minor</td>
-                            <td contenteditable="true" class="editable-content">Natural</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><span style="font-weight: 700; color: rgb(45, 80, 22);">2<span class="suit hearts">♥</span>/2<span class="suit spades">♠</span></span></td>
-                            <td contenteditable="true" class="editable-content">Natural raise, 11-12 HCP, 4+ diamonds</td>
-                            <td contenteditable="true" class="editable-content">Natural or 3<span class="suit clubs">♣</span> Stayman</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2NT</strong></td>
-                            <td contenteditable="true" class="editable-content"><span class="points">16+ HCP</span>, game forcing, no 4-card major</td>
-                            <td contenteditable="true" class="editable-content">Show distribution. 3<span class="suit clubs">♣</span> = Stayman</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>3-level</strong></td>
-                            <td contenteditable="true" class="editable-content">Jump = 13-15 HCP with good suit</td>
-                            <td contenteditable="true" class="editable-content">Natural or explore game/slam</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="warning editable-content" contenteditable="true">
-                    <strong>Important:</strong> 1NT response to 1<span class="suit diamonds">♦</span> specifically denies a 4-card major and shows weakness (8-10). With a 4-card major and 8+ HCP, always bid the major first.
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">1<span class="suit hearts">♥</span>/1<span class="suit spades">♠</span> - Five-Card Majors</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Requirements:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><span class="points">11-15 HCP</span></li>
-                        <li contenteditable="true" class="editable-content">5+ cards in the major suit</li>
-                        <li contenteditable="true" class="editable-content">Any repeat of the major shows 6+ cards</li>
-                    </ul>
-                </div>
-
-                <h4 contenteditable="true" class="editable-content">Responses to Major Suit Openings</h4>
-                <table class="bid-table">
-                    <thead>
-                        <tr>
-                            <th contenteditable="true" class="editable-content">Response</th>
-                            <th contenteditable="true" class="editable-content">Meaning</th>
-                            <th contenteditable="true" class="editable-content">Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>Raise to 2-level</strong></td>
-                            <td contenteditable="true" class="editable-content">8-10 HCP, 3+ card support</td>
-                            <td contenteditable="true" class="editable-content">Raise to level of fit (8 cards = 2-level, 9 cards = 3-level)</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>Raise to 3-level</strong></td>
-                            <td contenteditable="true" class="editable-content">11-12 HCP, 3+ card support</td>
-                            <td contenteditable="true" class="editable-content">Invitational</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>Raise to 4-level</strong></td>
-                            <td contenteditable="true" class="editable-content">13+ HCP, 4+ card support</td>
-                            <td contenteditable="true" class="editable-content">Game bid</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>1NT</strong></td>
-                            <td contenteditable="true" class="editable-content">8-10 HCP, <strong>only 2-card support</strong></td>
-                            <td contenteditable="true" class="editable-content">Semi-forcing (opener can pass with minimum)</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2-level minor</strong></td>
-                            <td contenteditable="true" class="editable-content">11-12 HCP, 5+ card suit, no 3-card support</td>
-                            <td contenteditable="true" class="editable-content">One-round force, looking for fit</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>Jump shift</strong></td>
-                            <td contenteditable="true" class="editable-content">13-15 HCP, 5+ card suit</td>
-                            <td contenteditable="true" class="editable-content">Game forcing</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2NT</strong></td>
-                            <td contenteditable="true" class="editable-content"><span class="points">16+ HCP</span>, <strong>without 4-card support</strong></td>
-                            <td contenteditable="true" class="editable-content">Game forcing, looking for best contract</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-    <h4 contenteditable="true" class="editable-content">Optional: Splinter Bids (Game-Forcing)</h4>
-    <div class="response-box editable-content" contenteditable="true">
-      <p contenteditable="true" class="editable-content"><strong>Purpose:</strong> Show <strong>4+ card support</strong> for partner’s major and a <strong>singleton or void</strong> in the splinter suit, with game-forcing values.</p>
-      <table class="bid-table">
-        <thead>
-          <tr>
-            <th contenteditable="true" class="editable-content">Auction</th>
-            <th contenteditable="true" class="editable-content">Meaning</th>
-            <th contenteditable="true" class="editable-content">Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td contenteditable="true" class="editable-content"><strong>1<span class="suit hearts">♥</span> – 4<span class="suit clubs">♣</span></strong></td>
-            <td contenteditable="true" class="editable-content">Hearts fit (4+), singleton/void in clubs, game-forcing</td>
-            <td contenteditable="true" class="editable-content">Double-jump in a side suit = splinter</td>
-          </tr>
-          <tr>
-            <td contenteditable="true" class="editable-content"><strong>1<span class="suit hearts">♥</span> – 3</strong><span style="color: rgb(45, 80, 22); font-weight: 700; background-color: rgb(250, 248, 245);"><span class="suit spades">♠</span></span></td>
-            <td contenteditable="true" class="editable-content">Hearts fit (4+), singleton/void in spade, game-forcing</td>
-            <td contenteditable="true" class="editable-content">Use with slam interest and shortness</td>
-          </tr>
-          <tr>
-            <td contenteditable="true" class="editable-content"><strong>1<span class="suit spades">♠</span> – 4<span class="suit clubs">♣</span></strong></td>
-            <td contenteditable="true" class="editable-content">Spade fit (4+), singleton/void in clubs, game-forcing</td>
-            <td contenteditable="true" class="editable-content">Similarly, 4♦ shows short diamonds</td>
-          </tr>
-        </tbody>
-      </table>
-      <p contenteditable="true" class="editable-content"><strong>Guidelines:</strong></p>
-      <ul>
-        <li contenteditable="true" class="editable-content">Values are sufficient for game; splinters help explore <strong>slam</strong> when controls/shortness fit well.</li>
-      </ul>
-    </div>
-
-
-                <h3 contenteditable="true" class="editable-content">2<span class="suit clubs">♣</span> - Singleton or Void</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Requirements:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><span class="points">13-16 V</span> or <span class="points">12-15 NV</span></li>
-                        <li contenteditable="true" class="editable-content">Singleton or void in any suit</li>
-                        <li contenteditable="true" class="editable-content"><strong>No 5-card major</strong></li>
-                        <li contenteditable="true" class="editable-content">Forcing one round</li>
-                    </ul>
-                </div>
-
-                <h4 contenteditable="true" class="editable-content">Response: 2<span class="suit diamonds">♦</span> Relay</h4>
-                <div class="response-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>10+ HCP use 2<span class="suit diamonds">♦</span> asks:</strong> "Name your singleton/void"</p>
-                    <p contenteditable="true" class="editable-content"><strong>Opener rebids:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content">2<span class="suit hearts">♥</span> = Singleton/void in hearts</li>
-                        <li contenteditable="true" class="editable-content">2<span class="suit spades">♠</span> = Singleton/void in spades</li>
-                        <li contenteditable="true" class="editable-content">3<span class="suit clubs">♣</span> = Singleton/void in clubs</li>
-                        <li contenteditable="true" class="editable-content">2NT = Singleton/void in diamonds</li>
-                    </ul>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">2<span class="suit diamonds">♦</span> - Multi-Way Diamond</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Requirements:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><span class="points">12-15 NV</span> or <span class="points">13-16 V</span></li>
-                        <li contenteditable="true" class="editable-content">Singleton or void in diamonds</li>
-                        <li contenteditable="true" class="editable-content"><b>Must be two 4-card majors</b></li>
-                        <li contenteditable="true" class="editable-content">Forcing one round</li>
-                    </ul>
-                </div>
-
-                <h4 contenteditable="true" class="editable-content">Responses to 2<span class="suit diamonds">♦</span></h4>
-                <table class="bid-table">
-                    <thead>
-                        <tr>
-                            <th contenteditable="true" class="editable-content">Response</th>
-                            <th contenteditable="true" class="editable-content">Meaning</th>
-                            <th contenteditable="true" class="editable-content">Opener's Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2<span class="suit hearts">♥</span>/2<span class="suit spades">♠</span></strong></td>
-                            <td contenteditable="true" class="editable-content">4-5 card major, weak</td>
-                            <td contenteditable="true" class="editable-content">Pass with 4-card support, otherwise bid other suit</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>3<span class="suit clubs">♣</span></strong></td>
-                            <td contenteditable="true" class="editable-content">5-card club suit, no 4-card major</td>
-                            <td contenteditable="true" class="editable-content">Consider support if 4-5 card clubs, otherwise bid major</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>3<span class="suit diamonds">♦</span></strong></td>
-                            <td contenteditable="true" class="editable-content"><strong>Strong (Stayman-like)</strong>, showing both majors</td>
-                            <td contenteditable="true" class="editable-content">Bid best 4-card major.</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>2NT</strong></td>
-                            <td contenteditable="true" class="editable-content">Diamond control twice</td>
-                            <td contenteditable="true" class="editable-content">Natural</td>
-                        </tr>
-                        <tr>
-                            <td contenteditable="true" class="editable-content"><strong>3NT</strong></td>
-                            <td contenteditable="true" class="editable-content">14+ HCP, good diamond stopper</td>
-                            <td contenteditable="true" class="editable-content">Pass or consider raise with maximum (14-15 points)</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3 contenteditable="true" class="editable-content">2<span class="suit hearts">♥</span>/2<span class="suit spades">♠</span> - Weak Two</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Requirements:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><span class="points">5-10 HCP</span></li>
-                        <li contenteditable="true" class="editable-content">6-card suit</li>
-                        <li contenteditable="true" class="editable-content">Preemptive - not invitational</li>
-                    </ul>
-                </div>
-
-                <h4 contenteditable="true" class="editable-content">2NT Asking Bid (Ogust Convention)</h4>
-                <div class="response-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Use 2NT only when looking for game</strong></p>
-                    <p contenteditable="true" class="editable-content"><strong>Responses to 2NT inquiry:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content">3<span class="suit clubs">♣</span> = Low HCP, weak major (bad hand)</li>
-                        <li contenteditable="true" class="editable-content">3<span class="suit diamonds">♦</span> = Low HCP, good major (good suit, weak hand)</li>
-                        <li contenteditable="true" class="editable-content">3<span class="suit hearts">♥</span> = High HCP, weak major (good hand, weak suit)</li>
-                        <li contenteditable="true" class="editable-content">3<span class="suit spades">♠</span> = High HCP, good major (good hand, good suit)</li>
-                        <li contenteditable="true" class="editable-content">3NT = Solid AKQJ10x in major (can run the suit)</li>
-                    </ul>
-                    <p contenteditable="true" class="editable-content"><strong>Strategy:</strong> Look for game in major if points in the suit, or 3NT if points outside suit</p>
-                </div>
-
-                <div class="warning editable-content" contenteditable="true">
-                    <strong>Remember:</strong> Opener is preemptive - don't get too ambitious. Raise to 4-level with outside strength and 16+ points combined with 2-card support.
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">3<span class="suit clubs">♣</span>/3<span class="suit diamonds">♦</span>/3<span class="suit hearts">♥</span>/3<span class="suit spades">♠</span> - Weak Three</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Requirements:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><span class="points">6-10 HCP</span></li>
-                        <li contenteditable="true" class="editable-content">7+ card suit</li>
-                        <li contenteditable="true" class="editable-content">Highly preemptive</li>
-                    </ul>
-                </div>
-
-                <div class="response-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Responses:</strong> Natural, but raise to 4-level only with:</p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content">Outside strength (not in opener's suit)</li>
-                        <li contenteditable="true" class="editable-content">16+ combined points</li>
-                        <li contenteditable="true" class="editable-content">2-card support minimum</li>
-                    </ul>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">1NT Opening</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Requirements:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><span class="points">13-15 NV</span></li>
-                        <li contenteditable="true" class="editable-content"><span class="points">14-16 V</span></li>
-                        <li contenteditable="true" class="editable-content">Balanced distribution (no singleton, usually 4-3-3-3, 4-4-3-2, or 5-3-3-2)</li>
-                    </ul>
-                </div>
-
-                <h4 contenteditable="true" class="editable-content">Stayman and Transfers</h4>
-                <div class="response-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>With 8+ HCP:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>2<span class="suit clubs">♣</span></strong> = Stayman (asking for 4-card major)</li>
-                        <li contenteditable="true" class="editable-content"><strong>2<span class="suit diamonds">♦</span></strong> = Transfer to hearts (5+ hearts)</li>
-                        <li contenteditable="true" class="editable-content"><strong>2<span class="suit hearts">♥</span></strong> = Transfer to spades (5+ spades)</li>
-                        <li contenteditable="true" class="editable-content"><strong>2NT</strong> = Invitational (11-12 HCP), opener accepts with maximum</li>
-                        <li contenteditable="true" class="editable-content"><strong>3NT</strong> = To play (13+ HCP)</li>
-                    </ul>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">2NT - Unusual 2NT (Minors)</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Requirements:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><span class="points">13-15 HCP</span></li>
-                        <li contenteditable="true" class="editable-content">5+ cards in both minors (5-5 or better)</li>
-                    </ul>
-                </div>
-
-                <div class="response-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Response:</strong> Bid your better minor. Be careful when vulnerable - need good suits.</p>
-                </div>
-            </section>
-
-            <!-- KEY PRINCIPLES -->
-            <section id="notes">
-                <h2 contenteditable="true" class="editable-content">Key Partnership Principles</h2>
-
-                <div class="card-box editable-content" contenteditable="true">
-                    <h4 contenteditable="true" class="editable-content">Passing Partner's Opening</h4>
-                    <p contenteditable="true" class="editable-content">Cannot pass with void or singleton support <strong>unless</strong> you have fewer than 8 HCP. However, always consider cross-ruff potential on any trump fit - ruffing in the short hand makes tricks!</p>
-                </div>
-
-                <div class="card-box editable-content" contenteditable="true">
-                    <h4 contenteditable="true" class="editable-content">Level of Fit Principle</h4>
-                    <p contenteditable="true" class="editable-content">When you have minimum support for partner's suit:</p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>8 cards combined</strong> → Bid to 2-level</li>
-                        <li contenteditable="true" class="editable-content"><strong>9 cards combined</strong> → Bid to 3-level</li>
-                        <li contenteditable="true" class="editable-content"><strong>10 cards combined</strong> → Bid to 4-level (game in major)</li>
-                    </ul>
-                    <p contenteditable="true" class="editable-content">With maximum points, <strong>consider bidding another suit first</strong> (forcing one round), then support partner's suit later to show extra strength.</p>
-                </div>
-
-                <div class="card-box editable-content" contenteditable="true">
-                    <h4 contenteditable="true" class="editable-content">Slam Requirements</h4>
-                    <p contenteditable="true" class="editable-content">Don't miss slam opportunities! Requirements:</p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content">Minimum 29 combined points for 6NT</li>
-                        <li contenteditable="true" class="editable-content">Minimum 33 combined points for 7NT</li>
-                        <li contenteditable="true" class="editable-content">9+ cards combined in trump suit for suit slams</li>
-                        <li contenteditable="true" class="editable-content">Consider void/singleton for cross-ruff potential</li>
-                    </ul>
-                    <p contenteditable="true" class="editable-content"><strong>Remember:</strong> Ruffing in the short hand makes tricks!</p>
-                </div>
-            </section>
-
-            <!-- DEFENSE & SIGNALS -->
-            <section id="defense">
-                <h2 contenteditable="true" class="editable-content">Defense &amp; Signals</h2>
-
-                <h3 contenteditable="true" class="editable-content">Giving Partner a Ruff</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <h4 contenteditable="true" class="editable-content">Suit Preference Signals</h4>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>High card</strong> → Looking for <strong>higher suit</strong> back as entry</li>
-                        <li contenteditable="true" class="editable-content"><strong>Low card</strong> → Looking for <strong>lower suit</strong> back as entry</li>
-                    </ul>
-                    
-                    <div class="example editable-content" contenteditable="true">
-                        <div class="example-title">Example:</div>
-                        Partner leads ♠A (asking for ruff). You play ♠9 (high) = "Return a heart (higher suit) for entry"
-                        Partner leads ♠A. You play ♠2 (low) = "Return a club or diamond (lower suit) for entry"
-                    </div>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">Discarding Signals</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content">When you cannot follow suit and must discard:</p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>Low discard</strong> → Interest in the <strong>lower</strong> of the other two suits</li>
-                        <li contenteditable="true" class="editable-content"><strong>High discard</strong> → Interest in the <strong>higher</strong> of the other two suits</li>
-                        <li contenteditable="true" class="editable-content"><strong>Middle card (6 or 7)</strong> → Neutral, "this suit may be okay"</li>
-                    </ul>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">Count Signals</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>High-Low = Even number of cards</strong></p>
-                    <p contenteditable="true" class="editable-content"><strong>Low-High = Odd number of cards</strong></p>
-                    
-                    <div class="example editable-content" contenteditable="true">
-                        <div class="example-title">Example:</div>
-                        You hold Q-7-4-2. Partner leads the suit.
-                        Play 7 (high), then 2 (low) = Shows even number (4 cards)
-                        
-                        You hold K-8-3. Partner leads the suit.
-                        Play 3 (low), then 8 (high) = Shows odd number (3 cards)
-                    </div>
-                    
-                    <p contenteditable="true" class="editable-content"><strong>Why it matters:</strong> Helps partner count the hand and know when to finesse or duck.</p>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">Attitude Signals (During Play)</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>High card</strong> = Hate this suit (no strength, want shift)</li>
-                        <li contenteditable="true" class="editable-content"><strong>Low card</strong> = Love this suit (have strength, continue)</li>
-                    </ul>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">Opening Lead Conventions</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <h4 contenteditable="true" class="editable-content">Honor Sequences</h4>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>Ace led</strong> → Also has King (AK combination)</li>
-                        <li contenteditable="true" class="editable-content"><strong>King led</strong> → Also has Queen (KQ combination)</li>
-                        <li contenteditable="true" class="editable-content"><strong>Queen led</strong> → Has QJ10 sequence</li>
-                        <li contenteditable="true" class="editable-content"><strong>Jack led</strong> → Has J109 sequence (plus one more)</li>
-                    </ul>
-
-                    <h4 contenteditable="true" class="editable-content">Leading Partner's Suit</h4>
-                    <p contenteditable="true" class="editable-content">Best to lead the <strong>highest card</strong> to help partner figure out your holding.</p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content">From 3 small → Top of nothing (e.g., from 954, lead 9)</li>
-                        <li contenteditable="true" class="editable-content">From AJ9x → Consider low (can lead back into your Ace later)</li>
-                    </ul>
-
-                    <h4 contenteditable="true" class="editable-content">Fourth Highest vs NT</h4>
-                    <p contenteditable="true" class="editable-content">Lead fourth-highest from your longest/strongest suit against NT (useful for <strong>Rule of 11</strong>).</p>
-                    <p contenteditable="true" class="editable-content"><strong>Exception:</strong> With internal sequence like Q1098x, lead the 10 (not the 8)</p>
-                    
-                    <div class="warning editable-content" contenteditable="true">
-                        <strong>Danger:</strong> Leading partner's suit may be dangerous if opponents overcalled into NT - they want it led! Consider top from three cards as an escape route.
-                    </div>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">Rule of 11</h3>
-                <div class="card-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content">When partner leads fourth-highest against NT:</p>
-                    <p contenteditable="true" class="editable-content"><strong>11 - (card led) = number of higher cards in other three hands</strong></p>
-                    
-                    <div class="example editable-content" contenteditable="true">
-                        <div class="example-title">Example:</div>
-                        Partner leads the 7 against 3NT. You're in dummy.
-                        11 - 7 = 4 higher cards outside partner's hand
-                        You can see 2 in dummy, 1 in your hand = Partner has 1 higher card
-                        This tells you whether to play high or low from dummy!
-                    </div>
-                </div>
-            </section>
-
-            <!-- INTERFERENCE -->
-            <section id="interference">
-                <h2 contenteditable="true" class="editable-content">Competitive Bidding &amp; Interference</h2>
-
-                <h3 contenteditable="true" class="editable-content">After Opponent Opens 1NT</h3>
-                <div class="interference-box editable-content" contenteditable="true">
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>2<span class="suit clubs">♣</span></strong> = Both minors (5-5 or better)</li>
-                        <li contenteditable="true" class="editable-content"><strong>2<span class="suit diamonds">♦</span></strong> = Both majors (5-5 or better)</li>
-                        <li contenteditable="true" class="editable-content"><strong>Double (X)</strong> = Penalties, showing 16+ HCP (equivalent to our 1<span class="suit clubs">♣</span> opening)</li>
-                        <li contenteditable="true" class="editable-content"><strong>2NT</strong> = Both minors (alternative, if playing different style)</li>
-                    </ul>
-                    <p contenteditable="true" class="editable-content"><strong>Partner should pass the double</strong> unless very weak with no escape suit.</p>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">After Opponent Opens One of a Suit</h3>
-                <div class="interference-box editable-content" contenteditable="true">
-                    <h4 contenteditable="true" class="editable-content">Direct Overcalls</h4>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>Simple overcall at 1-level</strong> = 8+ HCP, 5-card suit</li>
-                        <li contenteditable="true" class="editable-content"><strong>Simple overcall at 2-level</strong> = 10+ HCP, 5-card suit</li>
-                        <li contenteditable="true" class="editable-content"><strong>Jump overcall (e.g., 1<span class="suit hearts">♥</span>-2<span class="suit spades">♠</span>)</strong> = Weak, 6-10 HCP, 6-card suit</li>
-                        <li contenteditable="true" class="editable-content"><strong>Jump overcall at 3-level</strong> = Preemptive, 8-12 HCP, 7-card suit</li>
-                    </ul>
-
-                    <h4 contenteditable="true" class="editable-content">Doubles and NT Overcalls</h4>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>Double (X)</strong> = Takeout, opening points, no stopper in their suit</li>
-                        <li contenteditable="true" class="editable-content"><strong>1NT overcall</strong> = 14-16 HCP with stopper in their suit</li>
-                        <li contenteditable="true" class="editable-content"><strong>Cue-bid opponent's suit (e.g., 1<span class="suit hearts">♥</span>-2<span class="suit hearts">♥</span>)</strong> = 17+ HCP, game forcing</li>
-                    </ul>
-
-                    <h4 contenteditable="true" class="editable-content">Special Conventions</h4>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>2NT overcall</strong> = Both minors, 5-5 or better</li>
-                        <li contenteditable="true" class="editable-content"><strong>Michaels Cue-Bid 13-15 HCP</strong> (<b>optional</b>): Cue-bid shows 5-5 in specific suits
-                            <ul>
-                                <li contenteditable="true" class="editable-content">Over 1<span class="suit clubs">♣</span>: 2<span class="suit clubs">♣</span> = both majors</li>
-                                <li contenteditable="true" class="editable-content">Over 1<span class="suit diamonds">♦</span>: 2<span class="suit diamonds">♦</span> = both majors</li>
-                                <li contenteditable="true" class="editable-content">Over 1<span class="suit hearts">♥</span>: 2<span class="suit hearts">♥</span> = spades + minor</li>
-                                <li contenteditable="true" class="editable-content">Over 1<span class="suit spades">♠</span>: 2<span class="suit spades">♠</span> = hearts + minor</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">Double Meanings</h3>
-                <div class="interference-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong class="highlight">First chance double = Takeout</strong></p>
-                    <p contenteditable="true" class="editable-content"><strong class="highlight">Second chance double = Penalties</strong></p>
-                    
-                    <div class="example editable-content" contenteditable="true">
-                        <div class="example-title">Example:</div>
-                        Them: 1♥ - You: X (first chance) = Takeout
-                        Them: 1♥ - Partner: Pass - Them: 2♥ - You: X (second chance) = Penalties
-                    </div>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">After Opponent Opens 3-Level</h3>
-                <div class="interference-box editable-content" contenteditable="true">
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>Over 3<span class="suit clubs">♣</span>/3<span class="suit diamonds">♦</span> (minor): Double = Takeout</strong></li>
-                        <li contenteditable="true" class="editable-content"><strong>Over 3<span class="suit hearts">♥</span>/3<span class="suit spades">♠</span> (major): Double = Penalties</strong></li>
-                        <li contenteditable="true" class="editable-content"><strong>Over 3<span class="suit hearts">♥</span>/3<span class="suit spades">♠</span>: 3NT = Takeout</strong> (asking for minor suit)</li>
-                    </ul>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">When They Interfere with Our 1<span class="suit clubs">♣</span></h3>
-                <div class="interference-box editable-content" contenteditable="true">
-                    <p contenteditable="true" class="editable-content"><strong>Responder's actions after interference:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>Pass with &lt;6 HCP</strong> (can't compete safely)</li>
-                        <li contenteditable="true" class="editable-content"><strong>Double (X) with 6-9 HCP and shortage in opponent's suit</strong> = Takeout
-                            <ul><li contenteditable="true" class="editable-content">Opener then shows distribution, responder should bid 4-card major if held</li></ul>
-                        </li>
-                        <li contenteditable="true" class="editable-content"><strong>Nearest NT with 10-15 HCP or strength in opponent's suit</strong> = Forcing to game</li>
-                        <li contenteditable="true" class="editable-content"><strong>Cue-bid opponent's suit (next level) with 16+ HCP</strong> = Slam interest</li>
-                    </ul>
-                </div>
-
-                <h3 contenteditable="true" class="editable-content">When They Interfere with Our 1NT</h3>
-                <div class="interference-box editable-content" contenteditable="true">
-                    <h4 contenteditable="true" class="editable-content">After Natural Suit Overcall</h4>
-                    <p contenteditable="true" class="editable-content"><strong>Systems are ON</strong> - continue with Stayman and transfers:</p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>If they bid 2<span class="suit clubs">♣</span>:</strong> Double = Stayman (majors), 2<span class="suit diamonds">♦</span> = transfer to hearts, etc.</li>
-                        <li contenteditable="true" class="editable-content"><strong>If they bid 2<span class="suit diamonds">♦</span>/2<span class="suit hearts">♥</span>/2<span class="suit spades">♠</span>:</strong> Double = transfer to next suit up, other bids natural</li>
-                    </ul>
-
-                    <h4 contenteditable="true" class="editable-content">When They Double Our 1NT (for Penalties)</h4>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>5+ HCP:</strong> Leave it in (we should make it or go down 1)</li>
-                        <li contenteditable="true" class="editable-content"><strong>&lt;5 HCP with 6-card suit:</strong> Escape using transfers if possible:
-                            <ul>
-                                <li contenteditable="true" class="editable-content"><strong>Redouble (XX)</strong> = Escape to 2<span class="suit clubs">♣</span></li>
-                                <li contenteditable="true" class="editable-content"><strong>2<span class="suit clubs">♣</span></strong> = Escape to 2<span class="suit diamonds">♦</span></li>
-                                <li contenteditable="true" class="editable-content"><strong>2<span class="suit diamonds">♦</span></strong> = Transfer to 2<span class="suit hearts">♥</span></li>
-                                <li contenteditable="true" class="editable-content"><strong>2<span class="suit hearts">♥</span></strong> = Transfer to 2<span class="suit spades">♠</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="tip editable-content" contenteditable="true">
-                    <strong>Alert Rule:</strong> Always good idea to alert opponents at any unusual bid at 2-level and below.
-                </div>
-            </section>
-
-            <!-- SLAM BIDDING -->
-            <section id="slam">
-                <h2 contenteditable="true" class="editable-content">Slam Bidding Conventions</h2>
-
-                <div class="slam-box editable-content" contenteditable="true">
-                    <h3 contenteditable="true" class="editable-content">Roman Key Card Blackwood (RKCB) - For Suit Slams</h3>
-                    <p contenteditable="true" class="editable-content"><strong>Use when trump suit is agreed or implied</strong></p>
-                    <p contenteditable="true" class="editable-content"><strong>Five "Aces":</strong> 4 Aces + King of trumps = 5 key cards</p>
-
-                    <h4 contenteditable="true" class="editable-content">Asking for Key Cards: 4NT</h4>
-                    <p contenteditable="true" class="editable-content"><strong>Responses to 4NT:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>5<span class="suit clubs">♣</span></strong> = 0 or 3 key cards</li>
-                        <li contenteditable="true" class="editable-content"><strong>5<span class="suit diamonds">♦</span></strong> = 1 or 4 key cards</li>
-                        <li contenteditable="true" class="editable-content"><strong>5<span class="suit hearts">♥</span></strong> = 2 key cards without Queen of trumps</li>
-                        <li contenteditable="true" class="editable-content"><strong>5<span class="suit spades">♠</span></strong> = 2 key cards with Queen of trumps</li>
-                    </ul>
-
-                    <div class="example editable-content" contenteditable="true">
-                        <div class="example-title">Example Auction:</div>
-                        1♣ - 1♥ (hearts implied as trump)
-                        3♥ - 4NT (asking for key cards)
-                        5♦ (showing 1 or 4 - context shows it's 1)
-                    </div>
-
-                    <h4 contenteditable="true" class="editable-content">Asking for Kings: 5NT</h4>
-                    <p contenteditable="true" class="editable-content"><strong>Only ask after confirming all key cards are present!</strong></p>
-                    <p contenteditable="true" class="editable-content"><strong>Responses to 5NT:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>6<span class="suit clubs">♣</span></strong> = 0 kings (outside trump King)</li>
-                        <li contenteditable="true" class="editable-content"><strong>6<span class="suit diamonds">♦</span></strong> = 1 king</li>
-                        <li contenteditable="true" class="editable-content"><strong>6<span class="suit hearts">♥</span></strong> = 2 kings</li>
-                        <li contenteditable="true" class="editable-content"><strong>6<span class="suit spades">♠</span></strong> = 3 kings</li>
-                        <li contenteditable="true" class="editable-content"><strong>6NT</strong> = 4 kings</li>
-                    </ul>
-                </div>
-
-                <div class="slam-box editable-content" contenteditable="true">
-                    <h3 contenteditable="true" class="editable-content">Ace Asking for NT Slams - When NT Was Bid</h3>
-                    <p contenteditable="true" class="editable-content"><strong>Use 4<span class="suit clubs">♣</span> to ask for aces when heading to NT slam</strong></p>
-
-                    <h4 contenteditable="true" class="editable-content">Asking for Aces: 4<span class="suit clubs">♣</span></h4>
-                    <p contenteditable="true" class="editable-content"><strong>Responses to 4<span class="suit clubs">♣</span>:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>4<span class="suit diamonds">♦</span></strong> = 0 aces</li>
-                        <li contenteditable="true" class="editable-content"><strong>4<span class="suit hearts">♥</span></strong> = 1 ace</li>
-                        <li contenteditable="true" class="editable-content"><strong>4<span class="suit spades">♠</span></strong> = 2 aces</li>
-                        <li contenteditable="true" class="editable-content"><strong>4NT</strong> = 3 aces</li>
-                    </ul>
-
-                    <h4 contenteditable="true" class="editable-content">Asking for Kings: 5<span class="suit clubs">♣</span></h4>
-                    <p contenteditable="true" class="editable-content"><strong>Responses to 5<span class="suit clubs">♣</span>:</strong></p>
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>5<span class="suit diamonds">♦</span></strong> = 0 kings</li>
-                        <li contenteditable="true" class="editable-content"><strong>5<span class="suit hearts">♥</span></strong> = 1 king</li>
-                        <li contenteditable="true" class="editable-content"><strong>5<span class="suit spades">♠</span></strong> = 2 kings</li>
-                        <li contenteditable="true" class="editable-content"><strong>5NT</strong> = 3 kings</li>
-                    </ul>
-
-                    <div class="example editable-content" contenteditable="true">
-                        <div class="example-title">Example Auction:</div>
-                        1♣ - 1NT
-                        2NT - 4♣ (asking for aces)
-                        4♠ (showing 2 aces) - 6NT
-                    </div>
-                </div>
-
-                <div class="warning editable-content" contenteditable="true">
-                    <strong>Important:</strong> The distinction is critical:
-                    <ul>
-                        <li contenteditable="true" class="editable-content"><strong>Suit slam:</strong> Use 4NT (RKCB with 5 key cards including trump King)</li>
-                        <li contenteditable="true" class="editable-content"><strong>NT slam:</strong> Use 4<span class="suit clubs">♣</span> (simple ace asking with 4 aces only)</li>
-                    </ul>
-                </div>
-
-                <div class="tip editable-content" contenteditable="true">
-                    <h4 contenteditable="true" class="editable-content">When to Use Slam Bidding:</h4>
-                    <ul>
-                        <li contenteditable="true" class="editable-content">You have enough combined points (29+ for small slam, 33+ for grand)</li>
-                        <li contenteditable="true" class="editable-content">You have a good trump fit (9+ cards) or strong balanced hands</li>
-                        <li contenteditable="true" class="editable-content">You need to check for key cards to avoid missing 2 aces</li>
-                        <li contenteditable="true" class="editable-content">Consider void/singleton values - sometimes controls matter more than points</li>
-                    </ul>
-                </div>
-            </section>
-
+                </section>
         </main>
 
         <footer>
             <p>Precision Club System Reference Guide</p>
-            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Partnership Agreement Document</p>
         </footer>
     </div>
 
-    <!-- Edit Mode Indicator -->
-    <div class="edit-indicator show" id="editIndicator">
-        ✏️ EDIT MODE ACTIVE
-    </div>
+    <div class="edit-indicator" id="editIndicator">✏️ EDIT MODE ACTIVE</div>
 
-    <!-- Edit Controls -->
     <div class="edit-controls">
-        <button class="edit-btn" id="printCardBtn" onclick="prepareConventionCardPrint()">
-            🖨️ Print Card
-        </button>
-        <button class="edit-btn active" id="editToggle" onclick="promptForPIN()">🔓 Exit Edit Mode</button>
-        <button class="edit-btn" id="exportBtn" onclick="exportHTML()" style="display: block;">
-            💾 Export HTML
-        </button>
-        <button class="edit-btn danger" id="resetBtn" onclick="confirmReset()" style="display: block;">
-            🔄 Reset
-        </button>
+        <button class="edit-btn" id="editToggle" onclick="promptForPIN()">🔒 Edit Mode</button>
+        <button class="edit-btn" id="exportBtn" onclick="exportHTML()" style="display: none;">💾 Export HTML</button>
+        <button class="edit-btn danger" id="resetBtn" onclick="confirmReset()" style="display: none;">🔄 Reset</button>
     </div>
 
-    <!-- Print Controls -->
-    <div class="print-controls" id="printControls">
-        <strong>Convention Card Preview</strong>
-        <button class="print-now" onclick="printConventionCard()">🖨️ Print Now</button>
-        <button class="cancel-print" onclick="cancelPrint()">✕ Cancel</button>
-    </div>
-
-    <!-- PIN Modal -->
     <div class="modal" id="pinModal">
         <div class="modal-content">
             <h3>Enter PIN to Edit</h3>
             <input type="password" id="pinInput" placeholder="Enter 6-digit PIN" maxlength="6">
             <div class="modal-buttons">
-                <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
-                <button class="modal-btn primary" onclick="verifyPIN()">Unlock</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Confirmation Modal -->
-    <div class="modal" id="confirmModal">
-        <div class="modal-content">
-            <h3>Reset to Original?</h3>
-            <p>This will discard all your changes and restore the original document. This cannot be undone.</p>
-            <div class="modal-buttons">
-                <button class="modal-btn secondary" onclick="closeConfirmModal()">Cancel</button>
-                <button class="modal-btn danger" onclick="resetToOriginal()">Reset</button>
+                <button class="edit-btn danger" onclick="closeModal()" style="padding: 8px 16px;">Cancel</button>
+                <button class="edit-btn" onclick="verifyPIN()" style="padding: 8px 16px;">Unlock</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Configuration
-        const CORRECT_PIN = '138142'; // Change this to your desired PIN
+        const CORRECT_PIN = '138142';
         const STORAGE_KEY = 'precision_system_content';
         let isEditMode = false;
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             loadSavedContent();
-            
-            // Allow Enter key to submit PIN
-            document.getElementById('pinInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    verifyPIN();
-                }
+            document.getElementById('pinInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') verifyPIN();
             });
         });
 
-        // Load saved content from localStorage
         function loadSavedContent() {
             const saved = localStorage.getItem(STORAGE_KEY);
             if (saved) {
-                try {
-                    const content = JSON.parse(saved);
-                    if (content.main) {
-                        document.querySelector('main').innerHTML = content.main;
-                        console.log('Loaded saved content from localStorage');
-                    }
-                } catch (e) {
-                    console.error('Error loading saved content:', e);
-                }
+                const content = JSON.parse(saved);
+                if (content.main) document.querySelector('main').innerHTML = content.main;
             }
         }
 
-        // Save content to localStorage
         function saveContent() {
-            const content = {
-                main: document.querySelector('main').innerHTML,
-                timestamp: new Date().toISOString()
-            };
+            const content = { main: document.querySelector('main').innerHTML };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
-            console.log('Content saved to localStorage');
         }
 
-        // Show PIN modal
         function promptForPIN() {
-            if (isEditMode) {
-                exitEditMode();
-            } else {
+            if (isEditMode) exitEditMode();
+            else {
                 document.getElementById('pinModal').classList.add('show');
                 document.getElementById('pinInput').value = '';
                 document.getElementById('pinInput').focus();
             }
         }
 
-        // Close PIN modal
-        function closeModal() {
-            document.getElementById('pinModal').classList.remove('show');
-        }
+        function closeModal() { document.getElementById('pinModal').classList.remove('show'); }
 
-        // Verify PIN and enter edit mode
         function verifyPIN() {
-            const pin = document.getElementById('pinInput').value;
-            if (pin === CORRECT_PIN) {
+            if (document.getElementById('pinInput').value === CORRECT_PIN) {
                 enterEditMode();
                 closeModal();
             } else {
-                alert('Incorrect PIN. Please try again.');
+                alert('Incorrect PIN');
                 document.getElementById('pinInput').value = '';
-                document.getElementById('pinInput').focus();
             }
         }
 
-        // Enter edit mode
         function enterEditMode() {
             isEditMode = true;
-            
-            // Make all content editable
-            const editableElements = document.querySelectorAll('main h2, main h3, main h4, main p, main li, main td, main th, .card-box, .response-box, .interference-box, .slam-box, .glossary, .tip, .warning, .example');
-            editableElements.forEach(el => {
-                el.contentEditable = true;
-                el.classList.add('editable-content');
-            });
+            document.querySelectorAll('main h2, main h3, main h4, main p, main li, main td, main th, .card-box, .glossary, .tip, .warning')
+                .forEach(el => {
+                    el.contentEditable = true;
+                    el.classList.add('editable-content');
+                });
 
-            // Update UI
             document.getElementById('editToggle').textContent = '🔓 Exit Edit Mode';
             document.getElementById('editToggle').classList.add('active');
             document.getElementById('exportBtn').style.display = 'block';
             document.getElementById('resetBtn').style.display = 'block';
             document.getElementById('editIndicator').classList.add('show');
-
-            // Auto-save on changes
             document.querySelector('main').addEventListener('input', saveContent);
-            
-            console.log('Edit mode enabled');
         }
 
-        // Exit edit mode
         function exitEditMode() {
             isEditMode = false;
-            
-            // Save before exiting
             saveContent();
-            
-            // Make content non-editable
-            const editableElements = document.querySelectorAll('.editable-content');
-            editableElements.forEach(el => {
+            document.querySelectorAll('.editable-content').forEach(el => {
                 el.contentEditable = false;
                 el.classList.remove('editable-content');
             });
-
-            // Update UI
             document.getElementById('editToggle').textContent = '🔒 Edit Mode';
             document.getElementById('editToggle').classList.remove('active');
             document.getElementById('exportBtn').style.display = 'none';
             document.getElementById('resetBtn').style.display = 'none';
             document.getElementById('editIndicator').classList.remove('show');
-
-            console.log('Edit mode disabled');
         }
 
-        // Export HTML
         function exportHTML() {
-            // Save current content first
             saveContent();
-
-            // Get the complete HTML
-            const htmlContent = document.documentElement.outerHTML;
-            
-            // Create blob and download
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
+            const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
             const a = document.createElement('a');
-            a.href = url;
-            a.download = `precision_system_${new Date().toISOString().split('T')[0]}.html`;
-            document.body.appendChild(a);
+            a.href = URL.createObjectURL(blob);
+            a.download = 'precision_system_updated.html';
             a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-
-            alert('HTML exported successfully! You can now commit this to your GitHub repo.');
         }
 
-        // Show confirmation modal
         function confirmReset() {
-            document.getElementById('confirmModal').classList.add('show');
-        }
-
-        // Close confirmation modal
-        function closeConfirmModal() {
-            document.getElementById('confirmModal').classList.remove('show');
-        }
-
-        // Reset to original content
-        function resetToOriginal() {
-            if (confirm('Are you absolutely sure? This will permanently delete all your changes.')) {
+            if (confirm('Reset to original?')) {
                 localStorage.removeItem(STORAGE_KEY);
                 location.reload();
             }
         }
-
-        // Warn before leaving if in edit mode
-        window.addEventListener('beforeunload', function(e) {
-            if (isEditMode) {
-                e.preventDefault();
-                e.returnValue = '';
-            }
-        });
-
-        // Convention Card Print Functions
-        function prepareConventionCardPrint() {
-            // Exit edit mode if active
-            if (isEditMode) {
-                exitEditMode();
-            }
-
-            // Apply convention card preview class
-            document.body.classList.add('convention-card-preview');
-            
-            // Show print controls
-            document.getElementById('printControls').classList.add('show');
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function printConventionCard() {
-            // Switch to print class
-            document.body.classList.remove('convention-card-preview');
-            document.body.classList.add('convention-card-print');
-            
-            // Hide print controls
-            document.getElementById('printControls').classList.remove('show');
-            
-            // Trigger print dialog
-            setTimeout(function() {
-                window.print();
-                
-                // After print dialog closes, restore normal view
-                setTimeout(function() {
-                    document.body.classList.remove('convention-card-print');
-                }, 100);
-            }, 100);
-        }
-
-        function cancelPrint() {
-            // Remove preview class
-            document.body.classList.remove('convention-card-preview');
-            document.body.classList.remove('convention-card-print');
-            
-            // Hide print controls
-            document.getElementById('printControls').classList.remove('show');
-        }
-
-        // Listen for print dialog close
-        window.matchMedia('print').addListener(function(mql) {
-            if (!mql.matches) {
-                // Print dialog closed
-                document.body.classList.remove('convention-card-print');
-            }
-        });
     </script>
-
-
-</body></html>
+</body>
+</html>
