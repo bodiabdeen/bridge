@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Modern Acol Guide</title>
+    <title>The Ultimate Acol Reference Guide</title>
     <style>
-        /* التنسيقات الأساسية - تم الحفاظ عليها وزيادة تباين الألوان للدفاع */
         :root {
             --primary-blue: #0a2e52;
             --secondary-blue: #235a91;
@@ -16,126 +15,183 @@
             --opening-bg: #e7f1ff;
             --response-bg: #fffceb;
             --weak-bg: #fff5f5;
-            --defense-bg: #e8f5e9; /* لون أخضر هادئ للدفاع */
+            --defense-bg: #e8f5e9;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: var(--text-dark); background: var(--bg-cream); }
-        .container { max-width: 1100px; margin: 0 auto; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        
+        .container { max-width: 1200px; margin: 0 auto; background: white; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
         
         header { background: var(--primary-blue); color: white; padding: 3rem 1rem; text-align: center; border-bottom: 5px solid var(--accent-gold); }
-        nav { background: #111; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 100; }
-        nav a { color: #ddd; text-decoration: none; margin: 0 12px; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
+        header h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        nav { background: #111; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 100; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+        nav a { color: #ddd; text-decoration: none; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: var(--accent-gold); }
 
         main { padding: 2.5rem; }
-        section { margin-bottom: 4rem; }
-        h2 { color: var(--primary-blue); border-left: 5px solid var(--accent-gold); padding-left: 15px; margin-bottom: 20px; text-transform: uppercase; }
-        h3 { color: var(--secondary-blue); margin-top: 25px; border-bottom: 1px solid var(--border-color); }
+        section { margin-bottom: 5rem; border-bottom: 1px solid #eee; padding-bottom: 2rem; }
+        h2 { color: var(--primary-blue); border-left: 6px solid var(--accent-gold); padding-left: 15px; margin-bottom: 25px; text-transform: uppercase; font-size: 1.8rem; }
+        h3 { color: var(--secondary-blue); margin: 2rem 0 1rem; border-bottom: 1px solid var(--border-color); }
 
         .box { padding: 1.5rem; border-radius: 8px; margin: 1.2rem 0; border: 1px solid var(--border-color); }
-        .defense { background: var(--defense-bg); border-top: 4px solid #2e7d32; }
         .opening { background: var(--opening-bg); border-top: 4px solid var(--secondary-blue); }
-        
+        .response { background: var(--response-bg); border-top: 4px solid var(--accent-gold); }
+        .weak { background: var(--weak-bg); border-top: 4px solid #e74c3c; }
+        .defense { background: var(--defense-bg); border-top: 4px solid #2e7d32; }
+
         .bid-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
-        .bid-table th { background: #f1f3f5; padding: 12px; text-align: left; border: 1px solid var(--border-color); }
+        .bid-table th { background: #f1f3f5; padding: 12px; text-align: left; border: 1px solid var(--border-color); font-weight: bold; }
         .bid-table td { padding: 12px; border: 1px solid var(--border-color); vertical-align: top; }
+        .bid-table tr:nth-child(even) { background: #fafafa; }
 
         .suit { font-weight: bold; font-size: 1.1rem; }
         .spades { color: #000; } .hearts { color: #d63031; } .diamonds { color: #e67e22; } .clubs { color: #27ae60; }
         .points { background: #2d3436; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: bold; }
 
-        /* UI Controls */
+        /* Editing Tools */
         .edit-controls { position: fixed; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
-        .btn { padding: 12px 24px; border-radius: 6px; border: none; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn { padding: 12px 24px; border-radius: 6px; border: none; cursor: pointer; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .btn-edit { background: var(--primary-blue); color: white; }
         .btn-save { background: #27ae60; color: white; display: none; }
-        .edit-indicator { position: fixed; top: 15px; right: 15px; background: var(--accent-gold); color: white; padding: 5px 20px; border-radius: 20px; font-weight: bold; display: none; z-index: 101; }
+        .edit-indicator { position: fixed; top: 70px; right: 20px; background: var(--accent-gold); color: white; padding: 8px 20px; border-radius: 20px; font-weight: bold; display: none; z-index: 101; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; }
         .modal.show { display: flex; }
         .modal-content { background: white; padding: 2.5rem; border-radius: 12px; width: 350px; text-align: center; }
+        .modal input { width: 100%; padding: 12px; margin: 20px 0; border: 2px solid #ddd; border-radius: 6px; text-align: center; font-size: 1.2rem; }
+
+        footer { background: #111; color: white; text-align: center; padding: 3rem; margin-top: 2rem; }
+
+        @media (max-width: 768px) {
+            nav { gap: 8px; }
+            main { padding: 1rem; }
+            .bid-table { font-size: 0.8rem; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Modern Acol Bidding & Defense</h1>
-        <p>Full Partnership Reference • Bidding & Defensive Signals</p>
+        <h1>Modern Acol: The Complete Manual</h1>
+        <p>A Comprehensive Reference for Partnership Bidding & Defense</p>
     </header>
 
     <nav>
-        <a href="#one-level">Bidding</a>
-        <a href="#nt-system">NT & Transfers</a>
-        <a href="#defense-leads">Leads & Signals</a>
+        <a href="#one-level">One Level</a>
+        <a href="#nt-system">NT System</a>
+        <a href="#weak-twos">Weak Twos</a>
         <a href="#strong-bids">Strong Bids</a>
+        <a href="#competitive">Competitive</a>
+        <a href="#defense">Defense & Leads</a>
     </nav>
 
     <main>
-        <section id="defense-leads">
-            <h2>Defensive Leads & Signals</h2>
-            <div class="box defense">
-                <p><strong>Standard English Leads:</strong> Used to communicate the best line of defense to your partner.</p>
+        <section id="one-level">
+            <h2>1. Suit Openings (Level 1)</h2>
+            <div class="box opening">
+                <p><strong>Opening Requirement:</strong> <span class="points">12-19 HCP</span></p>
+                <p><strong>Rule of 20:</strong> Open if (HCP + length of 2 longest suits) &ge; 20.</p>
+                <p><strong>Choice of Suit:</strong> Open longest suit. 4-4-4-1 open suit below singleton. 4-4 minors open 1♣.</p>
             </div>
-
-            <h3>Opening Leads (Against Suit Contracts)</h3>
+            <h3>Responses to 1♥ / 1♠</h3>
             <table class="bid-table">
-                <thead>
-                    <tr><th>Holding</th><th>Lead</th><th>Meaning/Rule</th></tr>
-                </thead>
+                <thead><tr><th>Bid</th><th>Meaning</th><th>Strength</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>AK</strong>x(x)</td><td><strong>Ace</strong></td><td>Asking for attitude (High = Encourage)</td></tr>
-                    <tr><td><strong>KQ</strong>x(x)</td><td><strong>King</strong></td><td>Top of a sequence</td></tr>
-                    <tr><td><strong>QJ</strong>10 or <strong>QJ</strong>x</td><td><strong>Queen</strong></td><td>Top of a sequence</td></tr>
-                    <tr><td>Sequence (e.g., <strong>10</strong>98)</td><td><strong>Top</strong></td><td>Top of a sequence</td></tr>
-                    <tr><td>Small cards (e.g., 8<strong>5</strong>2)</td><td><strong>Middle</strong></td><td>MUD (Middle-Up-Down)</td></tr>
-                    <tr><td>Doubleton (e.g., 7<strong>2</strong>)</td><td><strong>High</strong></td><td>Top of a doubleton</td></tr>
-                    <tr><td>4th Highest</td><td><strong>Low</strong></td><td>Shows 1 or 2 honors in the suit</td></tr>
-                </tbody>
-            </table>
-
-            <h3>Opening Leads (Against NT Contracts)</h3>
-            <div class="box defense">
-                <ul>
-                    <li><strong>4th Highest:</strong> Lead 4th highest from your longest and strongest suit.</li>
-                    <li><strong>Rule of 11:</strong> Subtract the card value from 11 to know how many higher cards are in other hands.</li>
-                    <li><strong>Top of Sequence:</strong> Lead the top of a solid sequence (e.g., <strong>Q</strong>J10).</li>
-                </ul>
-            </div>
-
-            <h3>Defensive Signals (Discarding)</h3>
-            <table class="bid-table">
-                <thead>
-                    <tr><th>Type</th><th>Signal</th><th>Meaning</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td><strong>Attitude</strong></td><td>High card</td><td>Encouraging (I like this suit)</td></tr>
-                    <tr><td><strong>Attitude</strong></td><td>Low card</td><td>Discouraging (Switch to another suit)</td></tr>
-                    <tr><td><strong>Count</strong></td><td>High-Low</td><td>Shows an even number of cards</td></tr>
-                    <tr><td><strong>Count</strong></td><td>Low-High</td><td>Shows an odd number of cards</td></tr>
+                    <tr><td>1NT</td><td>Balanced, no support</td><td><span class="points">6-9 HCP</span></td></tr>
+                    <tr><td>Simple Raise</td><td>4+ card support</td><td><span class="points">6-9 HCP</span></td></tr>
+                    <tr><td>Jump Raise</td><td>4+ card support (Invitational)</td><td><span class="points">10-12 HCP</span></td></tr>
+                    <tr><td>New Suit (2-level)</td><td>Natural, forcing 1 round</td><td><span class="points">10+ HCP</span></td></tr>
                 </tbody>
             </table>
         </section>
 
-        </main>
+        <section id="nt-system">
+            <h2>2. No Trump System</h2>
+            <div class="box opening">
+                <p><strong>1NT Opening:</strong> <span class="points">12-14 HCP</span> Balanced.</p>
+                <p><strong>2NT Opening:</strong> <span class="points">20-22 HCP</span> Balanced.</p>
+            </div>
+            <h3>Stayman (2♣) & Transfers</h3>
+            <table class="bid-table">
+                <thead><tr><th>Response</th><th>Meaning</th></tr></thead>
+                <tbody>
+                    <tr><td>2♣ (Stayman)</td><td>Asking for 4-card Major (<span class="points">8+ HCP</span>)</td></tr>
+                    <tr><td>2♦ (Transfer)</td><td>5+ Hearts, Opener must bid 2♥</td></tr>
+                    <tr><td>2♥ (Transfer)</td><td>5+ Spades, Opener must bid 2♠</td></tr>
+                    <tr><td>2♠ (Minor Transfer)</td><td>Transfer to 3♣</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="weak-twos">
+            <h2>3. Weak Two Openings</h2>
+            <div class="box weak">
+                <p><strong>Bids:</strong> 2♦, 2♥, 2♠ | <strong>Strength:</strong> <span class="points">6-10 HCP</span> | <strong>Shape:</strong> Good 6-card suit.</p>
+            </div>
+            <h3>Ogust Inquiry (2NT)</h3>
+            <table class="bid-table">
+                <thead><tr><th>Opener's Rebid</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>3♣</td><td>Minimum points, Poor suit</td></tr>
+                    <tr><td>3♦</td><td>Minimum points, Good suit</td></tr>
+                    <tr><td>3♥</td><td>Maximum points, Poor suit</td></tr>
+                    <tr><td>3♠</td><td>Maximum points, Good suit</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="strong-bids">
+            <h2>4. Strong Bids</h2>
+            <div class="box opening">
+                <p><strong>2♣ Opening:</strong> <span class="points">23+ HCP</span> or Game Force. (2♦ = Negative response 0-7 HCP).</p>
+                <p><strong>4NT (Blackwood):</strong> Asking for Aces. 5♣(0/4), 5♦(1), 5♥(2), 5♠(3).</p>
+            </div>
+        </section>
+
+        <section id="competitive">
+            <h2>5. Competitive Bidding</h2>
+            <div class="box response">
+                <ul>
+                    <li><strong>Overcall:</strong> 1-level (8-15 HCP, 5+ suit), 2-level (10-15 HCP, strong suit).</li>
+                    <li><strong>Takeout Double:</strong> 12+ HCP, support for unbid suits.</li>
+                <li><strong>Overcall 1NT:</strong> 15-18 HCP with stopper in opponent's suit.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="defense">
+            <h2>6. Defense, Leads & Signals</h2>
+            <div class="box defense">
+                <h3>Opening Leads against Suits</h3>
+                <p><strong>Ace:</strong> From AKx | <strong>King:</strong> From KQx | <strong>Queen:</strong> From QJx</p>
+                <p><strong>4th Highest:</strong> From an honor (e.g., K97<strong>4</strong>)</p>
+                <h3>Signals</h3>
+                <p><strong>Attitude:</strong> High card = Encouraging. Low card = Discouraging.</p>
+                <p><strong>Count:</strong> High-Low = Even number of cards. Low-High = Odd number.</p>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p style="text-align:center; padding: 2rem; background: #111; color: white;">&copy; 2026 Bridge Guide</p>
+        <p>Ultimate Acol Reference Guide &copy; 2026</p>
+        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">Partner Agreement Document</p>
     </footer>
 </div>
 
-<div class="edit-indicator" id="editIndicator">✏️ EDITING MODE</div>
+<div class="edit-indicator" id="editIndicator">✏️ EDIT MODE ACTIVE</div>
 <div class="edit-controls">
     <button class="btn btn-edit" id="editBtn" onclick="askPIN()">🔒 Edit Mode</button>
-    <button class="btn btn-save" id="saveBtn" onclick="exportHTML()">💾 Export</button>
+    <button class="btn btn-save" id="saveBtn" onclick="exportHTML()">💾 Export HTML</button>
 </div>
 
 <div class="modal" id="pinModal">
     <div class="modal-content">
         <h3>PIN Required</h3>
-        <input type="password" id="pinInput" placeholder="Enter PIN">
-        <div style="display:flex; gap:10px; margin-top:10px;">
+        <input type="password" id="pinInput" maxlength="6" placeholder="******">
+        <div style="display:flex; gap:10px;">
             <button class="btn" onclick="closeModal()">Cancel</button>
             <button class="btn btn-edit" onclick="checkPIN()">Unlock</button>
         </div>
@@ -144,7 +200,7 @@
 
 <script>
     const PIN = '138142';
-    const KEY = 'acol_full_defense_v1';
+    const KEY = 'ultimate_acol_storage';
     let editMode = false;
 
     window.onload = () => {
@@ -164,7 +220,7 @@
             toggleEdit(true);
             closeModal();
             document.getElementById('pinInput').value = '';
-        } else alert('Invalid PIN');
+        } else alert('Incorrect PIN');
     }
 
     function toggleEdit(status) {
@@ -180,7 +236,7 @@
     function exportHTML() {
         const a = document.createElement('a');
         a.href = URL.createObjectURL(new Blob([document.documentElement.outerHTML], {type: 'text/html'}));
-        a.download = 'acol_with_defense.html';
+        a.download = 'ultimate_acol_system.html';
         a.click();
     }
 </script>
