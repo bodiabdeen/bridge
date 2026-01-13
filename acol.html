@@ -3,274 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acol System - Transfers & Weak Twos</title>
+    <title>Comprehensive Modern Acol Guide</title>
     <style>
+        /* التنسيقات الأساسية - تم الحفاظ عليها وزيادة تباين الألوان للدفاع */
         :root {
-            --primary-blue: #1a3a5f;
-            --secondary-blue: #2c5d97;
-            --accent-red: #c0392b;
-            --bg-cream: #f4f7f6;
-            --text-dark: #2c3e50;
-            --border-light: #dcdde1;
-            --opening-bg: #e3f2fd;
-            --response-bg: #fff9db;
-            --interference-bg: #ffebee;
-            --slam-bg: #f3e5f5;
+            --primary-blue: #0a2e52;
+            --secondary-blue: #235a91;
+            --accent-gold: #c5a059;
+            --bg-cream: #f8f9fa;
+            --text-dark: #1a1a1a;
+            --border-color: #dee2e6;
+            --opening-bg: #e7f1ff;
+            --response-bg: #fffceb;
+            --weak-bg: #fff5f5;
+            --defense-bg: #e8f5e9; /* لون أخضر هادئ للدفاع */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: var(--text-dark); background: var(--bg-cream); }
+        .container { max-width: 1100px; margin: 0 auto; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        
+        header { background: var(--primary-blue); color: white; padding: 3rem 1rem; text-align: center; border-bottom: 5px solid var(--accent-gold); }
+        nav { background: #111; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 100; }
+        nav a { color: #ddd; text-decoration: none; margin: 0 12px; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--accent-gold); }
 
-        body {
-            font-family: 'Segoe UI', 'Helvetica', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--bg-cream);
-        }
+        main { padding: 2.5rem; }
+        section { margin-bottom: 4rem; }
+        h2 { color: var(--primary-blue); border-left: 5px solid var(--accent-gold); padding-left: 15px; margin-bottom: 20px; text-transform: uppercase; }
+        h3 { color: var(--secondary-blue); margin-top: 25px; border-bottom: 1px solid var(--border-color); }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: white;
-            padding: 2.5rem 1rem;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-red);
-        }
-
-        nav {
-            background: #2f3640;
-            padding: 0.8rem;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        main { padding: 2rem; }
-
-        section { margin-bottom: 3rem; }
-
-        h2 {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--accent-red);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h3 { color: var(--secondary-blue); margin: 1.5rem 0 0.5rem; }
-
-        .bid-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-
-        .bid-table th {
-            background: var(--primary-blue);
-            color: white;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .bid-table td {
-            padding: 12px 10px;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .box { padding: 1.2rem; border-radius: 6px; margin: 1rem 0; border-left: 5px solid; }
-        .opening { background: var(--opening-bg); border-left-color: var(--secondary-blue); }
-        .response { background: var(--response-bg); border-left-color: #f1c40f; }
-        .warning { background: var(--interference-bg); border-left-color: var(--accent-red); }
+        .box { padding: 1.5rem; border-radius: 8px; margin: 1.2rem 0; border: 1px solid var(--border-color); }
+        .defense { background: var(--defense-bg); border-top: 4px solid #2e7d32; }
+        .opening { background: var(--opening-bg); border-top: 4px solid var(--secondary-blue); }
+        
+        .bid-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+        .bid-table th { background: #f1f3f5; padding: 12px; text-align: left; border: 1px solid var(--border-color); }
+        .bid-table td { padding: 12px; border: 1px solid var(--border-color); vertical-align: top; }
 
         .suit { font-weight: bold; font-size: 1.1rem; }
-        .spades { color: black; } .hearts { color: #e74c3c; }
-        .diamonds { color: #e67e22; } .clubs { color: #27ae60; }
+        .spades { color: #000; } .hearts { color: #d63031; } .diamonds { color: #e67e22; } .clubs { color: #27ae60; }
+        .points { background: #2d3436; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: bold; }
 
-        .points {
-            background: #2c3e50;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-        }
-
-        /* Edit Controls */
-        .edit-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 1000;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
+        /* UI Controls */
+        .edit-controls { position: fixed; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
+        .btn { padding: 12px 24px; border-radius: 6px; border: none; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .btn-edit { background: var(--primary-blue); color: white; }
         .btn-save { background: #27ae60; color: white; display: none; }
-        .btn-reset { background: #c0392b; color: white; display: none; }
-
-        .edit-indicator {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: #f1c40f;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            display: none;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            justify-content: center; align-items: center;
-        }
+        .edit-indicator { position: fixed; top: 15px; right: 15px; background: var(--accent-gold); color: white; padding: 5px 20px; border-radius: 20px; font-weight: bold; display: none; z-index: 101; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; }
         .modal.show { display: flex; }
-        .modal-content { background: white; padding: 2rem; border-radius: 8px; width: 300px; }
-        .modal input { width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #ddd; }
+        .modal-content { background: white; padding: 2.5rem; border-radius: 12px; width: 350px; text-align: center; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Acol System (Modern)</h1>
-        <p>4-Card Majors • Weak NT • Transfers • Weak Twos</p>
+        <h1>Modern Acol Bidding & Defense</h1>
+        <p>Full Partnership Reference • Bidding & Defensive Signals</p>
     </header>
 
     <nav>
-        <a href="#nt-bidding">NT & Transfers</a>
-        <a href="#weak-twos">Weak Twos</a>
-        <a href="#strong-openings">Strong 2♣</a>
-        <a href="#slam">Slam</a>
+        <a href="#one-level">Bidding</a>
+        <a href="#nt-system">NT & Transfers</a>
+        <a href="#defense-leads">Leads & Signals</a>
+        <a href="#strong-bids">Strong Bids</a>
     </nav>
 
     <main>
-        <section id="nt-bidding">
-            <h2>No Trump Bidding</h2>
-            <div class="box opening">
-                <p><strong>1NT Opening:</strong> <span class="points">12-14 HCP</span> Balanced.</p>
+        <section id="defense-leads">
+            <h2>Defensive Leads & Signals</h2>
+            <div class="box defense">
+                <p><strong>Standard English Leads:</strong> Used to communicate the best line of defense to your partner.</p>
             </div>
 
-            <h3>Transfers & Responses to 1NT</h3>
+            <h3>Opening Leads (Against Suit Contracts)</h3>
             <table class="bid-table">
                 <thead>
-                    <tr>
-                        <th>Bid</th>
-                        <th>Meaning</th>
-                        <th>Requirements</th>
-                    </tr>
+                    <tr><th>Holding</th><th>Lead</th><th>Meaning/Rule</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>2<span class="suit clubs">♣</span></strong></td>
-                        <td><strong>Stayman</strong>: Asking for 4-card Major</td>
-                        <td><span class="points">8+ HCP</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>2<span class="suit diamonds">♦</span></strong></td>
-                        <td><strong>Transfer to Hearts</strong> (Shows 5+ ♥)</td>
-                        <td><span class="points">0+ HCP</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>2<span class="suit hearts">♥</span></strong></td>
-                        <td><strong>Transfer to Spades</strong> (Shows 5+ ♠)</td>
-                        <td><span class="points">0+ HCP</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>2<span class="suit spades">♠</span></strong></td>
-                        <td>Transfer to 3<span class="suit clubs">♣</span> (or minor suit interest)</td>
-                        <td><span class="points">0+ HCP</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>2NT</strong></td>
-                        <td>Invitational to 3NT</td>
-                        <td><span class="points">11-12 HCP</span></td>
-                    </tr>
+                    <tr><td><strong>AK</strong>x(x)</td><td><strong>Ace</strong></td><td>Asking for attitude (High = Encourage)</td></tr>
+                    <tr><td><strong>KQ</strong>x(x)</td><td><strong>King</strong></td><td>Top of a sequence</td></tr>
+                    <tr><td><strong>QJ</strong>10 or <strong>QJ</strong>x</td><td><strong>Queen</strong></td><td>Top of a sequence</td></tr>
+                    <tr><td>Sequence (e.g., <strong>10</strong>98)</td><td><strong>Top</strong></td><td>Top of a sequence</td></tr>
+                    <tr><td>Small cards (e.g., 8<strong>5</strong>2)</td><td><strong>Middle</strong></td><td>MUD (Middle-Up-Down)</td></tr>
+                    <tr><td>Doubleton (e.g., 7<strong>2</strong>)</td><td><strong>High</strong></td><td>Top of a doubleton</td></tr>
+                    <tr><td>4th Highest</td><td><strong>Low</strong></td><td>Shows 1 or 2 honors in the suit</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Opening Leads (Against NT Contracts)</h3>
+            <div class="box defense">
+                <ul>
+                    <li><strong>4th Highest:</strong> Lead 4th highest from your longest and strongest suit.</li>
+                    <li><strong>Rule of 11:</strong> Subtract the card value from 11 to know how many higher cards are in other hands.</li>
+                    <li><strong>Top of Sequence:</strong> Lead the top of a solid sequence (e.g., <strong>Q</strong>J10).</li>
+                </ul>
+            </div>
+
+            <h3>Defensive Signals (Discarding)</h3>
+            <table class="bid-table">
+                <thead>
+                    <tr><th>Type</th><th>Signal</th><th>Meaning</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Attitude</strong></td><td>High card</td><td>Encouraging (I like this suit)</td></tr>
+                    <tr><td><strong>Attitude</strong></td><td>Low card</td><td>Discouraging (Switch to another suit)</td></tr>
+                    <tr><td><strong>Count</strong></td><td>High-Low</td><td>Shows an even number of cards</td></tr>
+                    <tr><td><strong>Count</strong></td><td>Low-High</td><td>Shows an odd number of cards</td></tr>
                 </tbody>
             </table>
         </section>
 
-        <section id="weak-twos">
-            <h2>Weak Two Openings</h2>
-            <div class="box warning">
-                <p>Used for 2<span class="suit diamonds">♦</span>, 2<span class="suit hearts">♥</span>, and 2<span class="suit spades">♠</span>.</p>
-                <p><strong>Requirements:</strong> <span class="points">6-10 HCP</span> and a good <strong>6-card suit</strong>.</p>
-            </div>
-
-            <h3>Responses to Weak Twos</h3>
-            <table class="bid-table">
-                <thead>
-                    <tr>
-                        <th>Bid</th>
-                        <th>Meaning</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>New Suit</strong></td>
-                        <td>Natural, 5+ cards, Forcing for 1 round</td>
-                    </tr>
-                    <tr>
-                        <td><strong>2NT</strong></td>
-                        <td><strong>Feature Inquiry</strong>: Asking for strength/entry</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Suit Raise</strong></td>
-                        <td>Preemptive (Extending the block)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="strong-openings">
-            <h2>Strong Openings</h2>
-            <h3>2<span class="suit clubs">♣</span> Opening</h3>
-            <div class="box opening">
-                <p><strong>Requirements:</strong> <span class="points">23+ HCP</span> or Game Force Hand.</p>
-                <p><strong>2<span class="suit diamonds">♦</span> Response:</strong> Negative/Relay (<span class="points">0-7 HCP</span>).</p>
-                <p><strong>Other Responses:</strong> Positive, 5+ card suit, <span class="points">8+ HCP</span>.</p>
-            </div>
-        </section>
-
-        <section id="slam">
-            <h2>Slam Bidding</h2>
-            <div class="box response">
-                <p><strong>Blackwood 4NT:</strong> Asking for Aces (0/4, 1, 2, 3).</p>
-                <p><strong>Gerber 4<span class="suit clubs">♣</span>:</strong> Asking for Aces after a NT bid.</p>
-            </div>
-        </section>
-    </main>
+        </main>
 
     <footer>
-        <p style="text-align: center; padding: 1.5rem; background: #2f3640; color: white;">
-            Acol Partnership Agreement - Modern Standards
-        </p>
+        <p style="text-align:center; padding: 2rem; background: #111; color: white;">&copy; 2026 Bridge Guide</p>
     </footer>
 </div>
 
@@ -278,14 +129,13 @@
 <div class="edit-controls">
     <button class="btn btn-edit" id="editBtn" onclick="askPIN()">🔒 Edit Mode</button>
     <button class="btn btn-save" id="saveBtn" onclick="exportHTML()">💾 Export</button>
-    <button class="btn btn-reset" id="resetBtn" onclick="resetContent()">🔄 Reset</button>
 </div>
 
 <div class="modal" id="pinModal">
     <div class="modal-content">
         <h3>PIN Required</h3>
-        <input type="password" id="pinInput" maxlength="6">
-        <div style="display:flex; gap:10px;">
+        <input type="password" id="pinInput" placeholder="Enter PIN">
+        <div style="display:flex; gap:10px; margin-top:10px;">
             <button class="btn" onclick="closeModal()">Cancel</button>
             <button class="btn btn-edit" onclick="checkPIN()">Unlock</button>
         </div>
@@ -294,7 +144,7 @@
 
 <script>
     const PIN = '138142';
-    const KEY = 'acol_modern_data';
+    const KEY = 'acol_full_defense_v1';
     let editMode = false;
 
     window.onload = () => {
@@ -313,38 +163,26 @@
         if(document.getElementById('pinInput').value === PIN) {
             toggleEdit(true);
             closeModal();
-        } else {
-            alert('Access Denied');
-        }
+            document.getElementById('pinInput').value = '';
+        } else alert('Invalid PIN');
     }
 
     function toggleEdit(status) {
         editMode = status;
         document.querySelectorAll('main p, main li, main td, main h2, main h3, .box')
             .forEach(el => el.contentEditable = status);
-        
         document.getElementById('editBtn').innerHTML = status ? '🔓 Lock' : '🔒 Edit Mode';
         document.getElementById('saveBtn').style.display = status ? 'block' : 'none';
-        document.getElementById('resetBtn').style.display = status ? 'block' : 'none';
         document.getElementById('editIndicator').style.display = status ? 'block' : 'none';
-
         if(!status) localStorage.setItem(KEY, JSON.stringify(document.querySelector('main').innerHTML));
     }
 
     function exportHTML() {
         const a = document.createElement('a');
         a.href = URL.createObjectURL(new Blob([document.documentElement.outerHTML], {type: 'text/html'}));
-        a.download = 'acol_modern.html';
+        a.download = 'acol_with_defense.html';
         a.click();
     }
-
-    function resetContent() {
-        if(confirm('Reset all data?')) {
-            localStorage.removeItem(KEY);
-            location.reload();
-        }
-    }
 </script>
-
 </body>
 </html>
